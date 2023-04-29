@@ -8,3 +8,7 @@ function b (){
 }
 b();
 
+function c() {
+    console.log("push test");
+}
+
