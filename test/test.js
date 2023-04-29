@@ -12,3 +12,6 @@ function c() {
     console.log("push test");
 }
 
+function d() {
+    console.log("ddddd");
+}
