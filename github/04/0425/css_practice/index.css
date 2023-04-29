@@ -1,0 +1,15 @@
+
+#hello {
+    color: rgb(32, 90, 192)
+}
+
+#back {
+    background-image: url("22.jpg");
+    background-size:100%;
+    background-repeat:no-repeat;
+    height: 100vh;
+
+}
+.backIn {
+    color: rgb(255, 255, 255);
+}

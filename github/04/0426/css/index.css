@@ -1,0 +1,202 @@
+@font-face {
+    font-family: 'KorailRoundGothicBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KorailRoundGothicBold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+    font-family: 'KorailRoundGothicBold';
+    font-size: 20px;
+    
+}
+/* 
+body{
+    font-size: 2px;
+}
+ */
+
+
+/* 
+contain : 이미지가 잘리거나 찌그러지지 않는 한도 내에서 제일 크게 설정된다.
+cover : 이미지가 찌그러지지 않는 한도 내에서 제일 크게 설정된다.
+이미지의 가로, 세로비가 요소와 다르다면 이미지를 세로 또는 가로 방향으로 잘라내어 
+빈 공간이 생기지 않도록 설정한다. 
+*/
+#back {
+    background-image: url("https://cdn.pixabay.com/photo/2013/11/28/10/36/road-220058_640.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* background-attachment가 무슨 기능을 하는지 알려줘*/
+    overflow: scroll;
+    height: 100vh;
+    text-align: justify;
+}
+
+/* #hi {
+    color: yellow;
+    font-size: 3rem;
+    font-weight: 200;
+    font-style: italic;
+} */
+/* 
+#border {
+    height: 400px;
+    width: 400px;
+    
+    font-family: 'KorailRoundGothicBold';
+    font-style: oblique;
+    border-width: 10px;
+    border-color: brown;
+    border-style: dashed;
+    text-align: center;
+    margin: 10px auto;
+    padding: 150px;
+    font-size: 16px;
+   
+} */
+
+/* .orange {
+    color: orange;
+}
+
+.red {
+    color: red;
+} */
+
+div li{
+    color: blue;
+}
+
+div > span{
+    font-weight: bold;
+    font-size: 25px;
+}
+
+p + span + span+ span{
+    color: rgb(40, 229, 46);
+}
+
+/* #click:active {
+    color: rgb(116, 187, 238);
+    font-size: 100px;
+}
+
+a.visited {
+    color: blue;
+}
+
+.fruits span:first-child {
+    color:red;
+}
+
+.fruits h3:last-child {
+    color :rebeccapurple;
+} */
+
+.red{
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.eye_circle{
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+}
+    .eye_circle2{
+        width: 22px;
+        height: 22px;
+        border-radius: 25px;
+}
+#circle1 {
+    background-color: rgb(88, 123, 230);
+}
+
+#circle2 {
+    background-color: rgb(16, 107, 186);
+    position:relative;
+    left: 75px;
+    top: -55px;
+}
+
+#circle3 {
+    background-color: rgb(32, 55, 148);
+    position:absolute;
+    left: 40px;
+    top: 40px;
+}
+
+#circle4 {
+    background-color: rgb(143, 186, 247);
+    position:absolute;
+    left: 50px;
+    top: 0px;
+}
+
+#circle5 {
+    background-color: rgb(52, 98, 119);
+    position: absolute;
+    left: 60px;
+    top: 0px;
+}
+
+#eye_circle1{
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    left: 23px;
+    top : 17px;
+}
+
+#eye_circle2 {
+    background-color: rgb(0, 0, 0);
+    position: absolute;
+    left: 0px;
+    top : 7px;
+}
+.img1 {
+    width: 400px;
+    height: 400px;
+}
+#img2 {
+    
+    position: relative;
+    left: -200px;
+    top: -120px;
+}
+
+
+
+.picture1 {
+    top: 50px;
+    position: absolute;
+    left: 010px;
+    transform: skewY(25deg);
+    z-index: 3;
+}
+.picture2 {
+    top: 50px;
+
+    position: absolute;
+    left: 27%;
+    transform: skewY(25deg);
+    z-index: 2;
+}
+
+.picture3 {
+    top: 50px;
+
+    position: absolute;
+    left: 52%;
+    transform: skewY(25deg);
+    z-index: 1;
+}
