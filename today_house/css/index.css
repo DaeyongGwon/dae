@@ -63,7 +63,6 @@ header {
 
 .header_category {
     display: block;
-    min-width: 768px;
     flex: 1 1 0px;
     white-space: nowrap;
 }
@@ -112,7 +111,122 @@ header {
     border-radius: 3px;
 }
 
-.css-loslz5 {
+.header_category2 {
+    display: flex;
+    -webkit-box-align: center;
     align-items: center;
-    font: inherit;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    line-height: 0;
+}
+
+.search {
+    font-size: 24px;
+    background-color: white;
+    border: none;
+    display: inline-block;
+    padding: 6px;
+    margin: 3px 1px;
+    color: #2F3438;
+}
+
+.cart_main {
+    margin-top: 9px;
+    margin-left: 1px;
+    margin-bottom: 9px;
+    margin-right: 1px;
+    position: relative;
+    display: inline-block;
+    padding: 6px;
+    color: #2F3438;
+
+}
+
+.cart {
+    
+    display: inline-block;
+    line-height: 1;
+    font-size: 24px;
+}
+
+.category2 {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 476px;
+}
+
+.category2_son{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    line-height: 0;
+}
+
+.category_lo{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.category_lo_son {
+    display: flex;
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+
+}
+
+.category2_1 {
+    border-left: none;
+    font-size: 14px;
+    line-height: 18px;
+    color: #2F3438;
+    padding-top: 0px;
+    padding-left: 10px;
+    padding-bottom: 0px;
+    padding-right: 10px;   
+    border-left: 1px solid #eaedef;
+    text-decoration-line: none;
+}
+
+.wri {
+    line-height: 0px;
+}
+
+.write {
+    margin: 0px;
+    font-size: 14px;
+    line-height: 18px;
+    border: none;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: auto;
+    height: 40px;
+    border-radius: 4px;
+    padding-top: 0px;
+    padding-right: 16px;
+    padding-bottom: 0px;
+    padding-left: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #35C5F0;
+    overflow: hidden;
+}
+
+.write_blue {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.write_blue2{
+    font-size: 18px;
+    line-height: 1;
+    vertical-align: middle;
+    display: none;
 }
