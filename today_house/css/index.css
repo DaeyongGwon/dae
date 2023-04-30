@@ -1,0 +1,117 @@
+body{
+    min-width: 768px;
+    font-size: 15px;
+    letter-spacing: -0.4px;
+
+}
+html{
+    min-width: 768px;
+    font-size: 15px;
+    letter-spacing: -0.4px;
+    
+}
+/* 최상위 */
+.root {
+    position: relative;
+    z-index: 1102;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #eaedef;
+}
+header {
+	font-size: 18px;
+}
+
+.head_logo {
+    margin-right: 20px;
+
+}
+.logo {
+    min-width: 768px;
+    height: 30px;
+    border: none;
+    background: none;
+
+    -webkit-box-align: center;
+    margin: -4px;
+    padding: 4px;
+    font-size: 0px;
+    line-height: 0;
+    outline: none;
+}
+
+.oh {
+    height: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-bottom: 10px;
+    padding-right: 40px;
+
+
+    min-width: 768px;
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    box-sizing: border-box;
+    line-height: 0;
+    }
+
+.header_category {
+    display: block;
+    min-width: 768px;
+    flex: 1 1 0px;
+    white-space: nowrap;
+}
+.header_category_blue {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 21px 5px 15px;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: bold;
+    color: #2F3438;
+    outline: none;
+    color: #35C5F0;
+    color: #35C5F0;
+}
+
+.header_category_son {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 21px 5px 15px;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: bold;
+    color: #2F3438;
+    outline: none;
+}
+
+.header_category_son_a {
+    display: inline-block;
+    margin: -4px;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.css-loslz5 {
+    align-items: center;
+    font: inherit;
+}
