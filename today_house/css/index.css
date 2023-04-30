@@ -10,6 +10,9 @@ html{
     letter-spacing: -0.4px;
     
 }
+header {
+	font-size: 18px;
+}
 /* 최상위 */
 .root {
     position: relative;
@@ -17,9 +20,7 @@ html{
     background-color: #FFFFFF;
     border-bottom: 1px solid #eaedef;
 }
-header {
-	font-size: 18px;
-}
+
 
 .head_logo {
     margin-right: 20px;
