@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <p>값1: <input type="text" id="value1"></p>
+    <p>값2: <input type="text" id="value2"></p>
+    <p>연산자: <input type="text"id="operator"></p>
+    <button id="calc">계산</button>
+    <button id="erase">초기화</button>
+    <br />
+    <p>결과: <input type="text" id="result" disabled></p>
+
+    <script>
+        $(document).ready(function() {
+            const $result = $('#result'),
+            $value1 = $('#value1'),
+            $value2 = $('#value2'),
+            $operator = $('#operator'),
+            $inputs = $('input'),
+            $calc = $('#calc'),
+            $erase = $('#erase')
+
+            $calc.click(function() {
+                const num1 = parseInt($value1.val()),
+                    num2 = parseInt($value2.val()),
+                    op = $operator.val()
+                let rtn
+                if (op == '+') {
+                    rtn = num1 + num2
+                } else if (op == '-') {
+                    rtn = num1 - num2
+                } else if (op == '*') {
+                    rtn = num1 * num2
+                } else if (op == '/') {
+                    rtn = num1 / num2
+                }
+                $result.val(rtn)
+            })
+
+            $erase.click(function() {
+                $inputs.val('')
+            })
+        })
+    </script>
+</body>
+</html>
