@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="todo-form" action="/">
+        <input type="text" name="todo">
+        <button>Add</button>
+    </form>
+    <ul class="todos"></ul>
+
+    <script>
+
+        const todoForm = document.querySelector('#todo-form')
+        console.log(todoForm)
+        todoForm.addEventListener('submit', function(e){
+            e.preventDefault();
+            console.log(e);
+            
+            const todoInput = document.querySelector('input[name=todo]');
+            const todos = document.querySelector('.todos')
+            console.log(todoInput.value);
+            const todo = todoInput.value
+
+            const newTodo = document.createElement('li')
+            newTodo.append(todo)
+            todos.append(newTodo)
+            todoInput.value =''
+        })
+    </script>
+</body>
+</html>
