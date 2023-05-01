@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/github/05/0501/css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="parent">
+        <div class="hello"></div>
+        <div class="hello"></div>
+        <div class="hello"></div>
+        <div class="hello"></div>
+    </div>
+
+    <script>
+        const hello1 = document.getElementsByClassName('hello')
+        const hello2 = document.querySelectorAll('.hello')
+        const parent = document.getElementById('parent')
+        console.log(hello1)
+        console.log(hello2)
+        
+        //동적으로 추가한것
+        const divs = document.createElement('div')
+        const ps = document.createElement('p')
+        ps.setAttribute('class','hello')
+        divs.setAttribute('class', 'hello2')
+
+        //after 요소의 형제이면서 뒤
+        //before 요소의 형제이면서 앞
+        parent.append(divs,"안녕하세요",ps)
+        parent.appendChild(divs)
+        parent.before(divs)
+
+
+      
+    </script>
+</body>
+</html>
