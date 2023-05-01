@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">div 태그입니다.</div>
+    <button id="btn">버튼입니다</button>
+
+
+    <script>
+        const over = document.getElementById('div1');
+        function onMouseout(){
+            over.style.color='black'
+            over.style.fontWeight = '700'
+            console.log('mouse out')
+        }
+        const div1 = document.querySelector('#div1')
+        div1.addEventListener('mouseover',function(){
+            div1.style.color = 'blue';
+            div1.style.fontWeight = '700';
+            console.log('mouse over')
+        })
+        div1.onmouseout = onMouseout;
+        over.onMouseout = onMouseout;
+
+        const btn = document.getElementById('btn')
+        function onClickButton(){
+            console.log('click')
+            alert("click");
+        }
+        btn.addEventListener(btn, onClickButton)
+
+
+
+
+    </script>
+</body>
+</html>

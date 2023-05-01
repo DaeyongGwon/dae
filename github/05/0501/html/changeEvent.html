@@ -11,6 +11,16 @@
     <input type="text" id="change-input">
     <div class="intro"></div>
 
+    <div class="container">
+        <ul>
+            <li class="todo">1. 해야할일</li>
+            <li class="todo">2. 해야할일</li>
+            <li class="done">3. 완료한 일</li>
+            <li class="done">4. 완료한 일</li>
+            <li class="done">5. 완료한 일</li>
+        </ul>
+
+    </div>
 
 
 
@@ -26,6 +36,14 @@
             let div = document.querySelector('.intro')
             div.textContent = this.value;
         })
+
+        document.getElementsByClassName('.intro')
+
+        const i = document.querySelectorAll('li')
+        for(let li of i){
+            li.classList.toggle('todo')
+            li.classList.toggle('done')
+        }
     </script>
 </body>
 </html>

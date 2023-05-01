@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <div id="circle"></div>
+</head>
+<body>
+    <style>
+        #circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: black;
+            position: relative;
+        }
+    </style>
+    <input id="keyboard"></input>
+    <script>
+        const keyboard = document.getElementById('keyboard')
+        keyboard.addEventListener('keydown', function(event){
+            console.log(event)
+        } )
+        keyboard.addEventListener('click', function(){
+            keyboard.style.backgroundColor = 'black'
+            keyboard.style.color = 'white'
+            if(event.code == 'a'){
+                console.log('a 값이 입력되었습니다.')
+            }
+        })
+        const circle = document.querySelector('#circle')
+        keyboard.addEventListener('keydown',function(e){
+            if(e.code == 'ArrowRight'){
+                circle.style.left = '15px'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">btn1</button>
+    <button id="btn">btn2</button>
+    <button id="btn">btn3</button>
+    <button id="btn">btn4</button>
+    <button id="btn">btn5</button>
+
+
+    <script>
+        
+        
+        const tbs = document.querySelectorAll('#btn');
+        //this 함수가 속해있던 객체 참조
+        function bgColor(){
+            this.style.backgroundColor = "blue"
+        }
+        function bgColor_out(){
+            this.style.backgroundColor = "white"
+        }
+        for(let btn of tbs){
+            console.log(btn)
+            btn.addEventListener('click',bgColor)
+        }
+        const abs = document.querySelectorAll('#btn')
+        for(let btn of abs){
+            btn.addEventListener('mouseout',bgColor_out)
+        }
+    </script>
+</body>
+</html>
