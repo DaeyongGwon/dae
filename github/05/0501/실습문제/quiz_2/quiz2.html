@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            .text-center {
+                text-align: center;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: 0px;
+                margin-bottom: 15px;
+            }
+            .img-box{
+                margin-top: 15px;
+                margin-bottom: 15px;
+                width: 140px;
+                height: 140px;
+                border-radius: 70px;
+                background-color: pink;
+
+            }
+            .article-box{
+                width: 280px;
+                background-color: rgb(255, 224, 229);
+                margin: 5px;
+                border-radius: 15px;
+            }
+        </style>
+        <title>Document</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <h2 class="text-center">이달의 맛 BEST9</h2>
+        <section class="text-center"></section>
+        <script>
+            $(document).ready(function() {
+                const section = $('section');
+                const icecreams = [
+                    "내가 아인슈페너?!",
+                    "엄마는 외계인",
+                    "민트 초콜릿 칩",
+                    "뉴욕 치즈케이크",
+                    "아이스 초당옥수수",
+                    "초콜릿 무스",
+                    "체리쥬빌레",
+                    "유! 넌 내거야",
+                    "오레오 쿠키 앤 크림"];
+                for (let i = 1; i < 10; i++) {
+                    const article = $('<article></article>').addClass('article-box');
+                    const imgBox = $('<img>').addClass('img-box').attr('src', `/github/05/0501/실습문제/quiz_img/icecream${i}.png`);
+                    const h3 = $('<h3></h3>').addClass('text-center').text(`Top${i}`);
+                    const div = $('<div></div>').addClass('text-center').text(icecreams[i - 1]);
+                    article.append(imgBox, h3, div);
+                    section.append(article);
+                }
+            });
+        </script>
+    </body>
+</html>

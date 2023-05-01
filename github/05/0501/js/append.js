@@ -7,6 +7,7 @@ function appendJs() {
 function appendJquery() {
     $('.colors').append('<li>jQuery 마지막 자식추가</li>')
 }
+const article-box = document.createElement('.article-box')
 
 
 function prependJs(){
@@ -27,7 +28,7 @@ function beforejs(){
     green.before(li)
 }
 function beforrejQuery(){
-    $('.green').before('<li>Js before 자식추가</li>')
+    $('.green').before(`<li>Js before ${i}추가</li>`)
 }
 
 function afterjs(){

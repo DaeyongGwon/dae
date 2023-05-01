@@ -9,27 +9,26 @@
 </head>
 <body>
 
-    <div onclick="alert('div 태그를 클릭')">클릭</div>
     <button div id = "button">button</button>
-    <div id="mouseover">마우스올리세요</div>
-
-
+    <div onclick="alert('div 태그를 클릭')">클릭</div>
+    <div id="mouseout">마우스올리세요</div>
     <script>
-        const btn = document.getElementById('button')
-        btn.onclick = function() {
-            alert('button태그를 클릭')
+        const out = document.getElementById('mouseout')
+        function onMouseout(){
+            console.log("마우스 out")
+            out.style.color='blue'
         }
-
         const over = document.getElementById('mouseover');
         function onMouseOver(){
             console.log("마우스 오버")
             over.style.color= 'red'
         }
-        //함수에 이벤트를 걸려면 함수 괄호 없이 해야한다.
-        function onMouseout(){
-            console.log("마우스 out")
-            over.style.color='blue'
+        const btn = document.getElementById('button')
+        btn.onclick = function() {
+            alert('button태그를 클릭')
         }
+
+        //함수에 이벤트를 걸려면 함수 괄호 없이 해야한다.
         over.onmouseover = onMouseOver
         over.onmouseout = onMouseout
 

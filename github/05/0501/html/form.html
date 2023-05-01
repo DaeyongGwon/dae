@@ -8,14 +8,12 @@
 </head>
 
 <body>
+    <ul class="todos"></ul>
     <form id="todo-form" action="/">
         <input type="text" name="todo">
         <button>Add</button>
     </form>
-    <ul class="todos"></ul>
-
     <script>
-
         const todoForm = document.querySelector('#todo-form')
         console.log(todoForm)
         todoForm.addEventListener('submit', function(e){

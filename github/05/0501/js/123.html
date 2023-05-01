@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <style>
+            .text-center {
+                text-align: center;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>
+        <h2 class="text-center">09 BEST9</h2>
+        <section class="text-center"></section>
+        <script>
+            const section = document.querySelector('section'),  
+            icecreams = [
+            "내가 아인슈페너?!",
+            "엄마는 외계인",
+            "민트 초콜릿 칩",
+            "뉴욕 치즈케이크",
+            "아이스 초당옥수수",
+            "초콜릿 무스",
+            "체리쥬빌레",
+            "유! 넌 내거야",
+            "오레오 쿠키 앤 크림",
+            ];
+            for (let i = 1; i < 10; i++) {
+                const article = document.createElement('article'); 
+                article.classList.add("article-box");
+                const imgBox=document.createElement('img');
+                imgBox.setAttribute("src", `./image/icecre{ipng`); 
+                imgBox.classList.add("img-box");
+                article.append(imgBox);
+                const h3= document.createElement('h3');
+                h3.classList.add("text-center");
+                h3.textContent = `Top${i}`;
+                const div = document.createElement('div');
+                div.textContent = icecreams[i - 1];
+                div.classList.add("text-center");
+                article.append(div);
+                section.appendChild(article);
+            }
+        </script>
+    </body>
+    article.append(h3);
+    </html>
