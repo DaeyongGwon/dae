@@ -8,10 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+
     <div onclick="alert('div 태그를 클릭')">클릭</div>
     <button div id = "button">button</button>
-
+    <div id="mouseover">마우스올리세요</div>
 
 
     <script>
@@ -19,6 +19,22 @@
         btn.onclick = function() {
             alert('button태그를 클릭')
         }
+
+        const over = document.getElementById('mouseover');
+        function onMouseOver(){
+            console.log("마우스 오버")
+            over.style.color= 'red'
+        }
+        //함수에 이벤트를 걸려면 함수 괄호 없이 해야한다.
+        function onMouseout(){
+            console.log("마우스 out")
+            over.style.color='blue'
+        }
+        over.onmouseover = onMouseOver
+        over.onmouseout = onMouseout
+
+
+
     </script>
 </body>
 </html>

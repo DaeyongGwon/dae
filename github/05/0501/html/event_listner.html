@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/github/05/0501/css/index.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="button">이벤트리스너</button>
+    <button id="button2">마우스엔터</button>
+
+
+    <script>
+        //addEventListner방식
+        const btn = document.querySelector('#button')
+        btn.addEventListener('click', function() {
+            alert("이벤트 리스너 방식입니다.");
+        })
+        function MouseEnter() {
+            console.log("마우스 엔터입니다.")
+            const divs = document.createElement('span')
+
+            btn.append(divs)
+        }
+        const btn2 = document.querySelector('#button2');
+        btn2.addEventListener('mouseenter', MouseEnter)
+
+    </script>
+</body>
+</html>
