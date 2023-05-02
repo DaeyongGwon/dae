@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .main-box {
+            width: 500px;
+            height: 500px;
+            border : 2px solid black;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        .img-size {
+            width: 400px;
+            height: 400px;
+            margin: 30px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-box"><img class="img-size" src="./q.jpg" alt="/">
+        <button onclick="appleClick()">사과</button>
+        <button onclick="bananaClick()">바나나</button>
+        <button onclick="grapeClick()">포도</button>
+        <button onclick="peachClick()">복숭아</button>
+        
+
+        <script>
+                function appleClick() {
+                    $('.img-size').attr("src",'./apple.jpg')
+                }
+                function bananaClick() {
+                    $('.img-size').attr("src",'./bananas.jpg')
+                }
+                function grapeClick() {
+                    $('.img-size').attr("src",'./grapes.jpg')
+                }
+                function peachClick() {
+                    $('.img-size').attr("src",'./peaches.jpg')
+                }
+            
+        </script>
+    </div>
+
+
+
+</body>
+</html>

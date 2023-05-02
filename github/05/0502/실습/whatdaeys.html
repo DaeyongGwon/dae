@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="/" id="whatDays">
+        <input type="text" name="day">
+        <button>입력</button>
+    </form>
+    <script>
+        const whatDay = [
+        '월','화','수','목','금','토','일'
+        ]
+
+        $('#whatDays').submit(function(e){
+            //추가 버튼 클릭 시 '/'사이트로 이동하는 동작을 안하게 하는 법
+            e.preventDefault();
+            const msg = parseInt('input[name=msg]').val()
+            if(e=== '1'){
+                console.log('월');
+            }else if(e === '2'){
+                console.log('화');
+            }else if(e===3){
+                console.log('수');
+            }else if(e==='4'){
+                console.log('목');
+            }else if(e==='5'){
+                console.log('금');
+            }else if(e==='6'){
+                console.log('토');
+            }else if(e==='7'){
+                console.log('일');
+            }else{
+                console.log('null')
+            }
+        })
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h2>여기는 방명록</h2>
+    <p>작성자 <input type="text" id="writer"></p>
+    <p>내용 <input type="text" id="detail"></p>
+    <button id="addButton">등록</button>
+
+    <table id="myTable" border ="1" cellspacing ="1" cellpadding="20">
+        <thead>
+            <tr>
+                <th>작성자</th>
+                <th>내용</th>
+                <th>작성일</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        $(document).ready(function() {
+            const writerInput = $('#writer')
+            const detailInput = $('#detail')
+            const addButton = $('#addButton');
+            const tbody = $('#myTable tbody');
+            const now = new Date();
+            const date = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+            
+            addButton.on('click',function(){
+                const values = [writerInput.val(), detailInput.val(), date]
+                const newRow = $('<tr>')
+                tbody.append(newRow)
+                $.each(values, function(i, value){
+                    const newCell = $('<td>')
+                    newCell.text(value)
+                    newRow.append(newCell)
+                })
+                //버튼 누르고 입력되있는 부분 삭제
+                writerInput.val('')
+                detailInput.val('')
+            })
+        })
+
+    </script>
+</body>
+</html>

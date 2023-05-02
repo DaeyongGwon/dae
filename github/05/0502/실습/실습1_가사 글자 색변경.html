@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+    <style>
+        .container{
+            text-align: center;
+            background-color: #eee;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>시간의 바깥 - IU</h2>
+        <div>
+          서로를 <span class="color">감</span>아 포개어진 <span class="color">삶</span><br />
+          그들을 <span class="color">가</span>만 내려보는 <span class="color">달</span><br />
+          여전히 <span class="color">많</span>아 하고 싶은 <span class="color">말</span><br />
+          우리 좀 <span class="color">봐</span> 꼭 하나 같<span class="color">아</span><br />
+        </div>
+      </div>
+
+      <script>
+        //내코드
+        $('.color').css({'color':'blueviolet','font-weight':'bold'})
+
+        //강사님 코드
+        const spans = $('spans')
+        for(let span of spans){
+          $('span').css({'color': 'blueviolet', 'font-weight':'700'})
+        }
+        $(".container").css({'text-align':'center','background-color':'#eee'})
+
+      </script>
+</body>
+</html>
