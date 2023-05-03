@@ -1,0 +1,28 @@
+#media {
+    margin: 5px;
+    width: 1000px;
+    height: 400px;
+    color: black;
+   
+
+}
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.box { 
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    background-color: black;
+}
+
+@media (max-width: 700px){
+    .flex{
+        flex-direction : column; 
+    }
+    .box {
+        background-color: aqua;
+    }
+}
