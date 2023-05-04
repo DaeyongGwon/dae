@@ -3,7 +3,7 @@ $('#todo-form').submit(function(e){
     //추가 버튼 클릭 시 '/'사이트로 이동하는 동작을 안하게 하는 법
     e.preventDefault();
     const msg = $('input[name=msg]').val()
-    
+
     console.log(msg.toUpperCase())
     console.log(msg.toUpperCase())
     console.log(msg.toUpperCase())
