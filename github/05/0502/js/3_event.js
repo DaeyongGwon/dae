@@ -36,7 +36,7 @@ $('.numbers').mouseleave(function(){
 })
 //마우스 오버 코드 (오늘의집 배너 이거로 하면 된다.)
 $('.numbers').on('mouseover',function(){
-    $(this).css('background-color','skyblue')
+    $(this).css('background-color','black')
 })
 
 //hover : 변화상태 확인, 사용처는 마우스 가져갔을 때 메뉴가 쭉 나오는걸 만들 수 있다.
@@ -48,14 +48,7 @@ $('.hover').hover(function(){
     $(this).css('color','blue')
 } )
 
-//메뉴 숨김 기능 sub1
-/* $('.menu1').hover(function(){
-    $('.sub1').addClass('block')
-    //$('sub1').css('display','block')
-}, function(){
-    //$('.sub1').css('display','none')
-    $('.sub1').removeClass('block')
-}) */
+
 //메뉴 숨김 기능 sub2
 $('.menu1').hover(function(){
     $('.sub2').addClass('block')
