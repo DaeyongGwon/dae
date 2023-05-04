@@ -62,12 +62,7 @@ $('.menu1').hover(function(){
 $('.menu1').hover(function(){
     $('.sub1').toggleClass('block')
 })
-
+//git full request 테스트 #dae
 $(window).scroll(function(){
 
 })
-
-
-
-
-
