@@ -3,14 +3,16 @@ $(document).ready(function () {
 });
 
 function chatGPT() {
-  const api_key = "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"  // <- API KEY 입력
+  const api_key = "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"  // <- API KEY 입력
   const keywords = document.getElementById('keywords').value
   $('#loading').show();
+//
+  let iceCreamFlavor;
+  let messages = [
+    { role: 'system', content: "너는 세계 최고의 아이스크림 전문가이자 맛 감별사야. 최선을 다해서 답변해 드리겠습니다.원하시는 맛의 종류를 알려주세요." },
+    { role: "assistant", content: `저는 ${'keywords'} 맛에 대해서 알고 싶어요.`},
+    { role: 'user', content: keywords + "you will answer the question You are the world's best ice cream expert and icecream lover. When answering a question about ice cream, start with the recommended ice cream flavor is __ 그리고 절대 너에 대해서 설명하지마. 그리고 너는 질문에 대해서 아이스크림 맛에 대한 그 맛에대한 아이스크림 제품 4가지를 추천해주고 가격도 지정해줘. Please write down where the product is and fill in the price for the ice cream unconditionally and ask for it based on Korea standards. Answer me in Korean no matter what, and lastly, never explain yourself." },
 
-  const messages = [
-    { role: 'system', content: 'You are a helpful assistant.' },
-    // { role: 'user', content: keywords + "Please answer as much as you can about . Because you are the best, there is nothing to get stuck on. Please do not explain in detail no matter what. You are the world's greatest ice cream lover. To answer your question, just give me 5 types of ice cream and don't explain, And please answer in Korean" },
-    { role: 'user', content: keywords + "you will answer the question You are the world's best ice cream expert and lover. When answering a question about ice cream, start with the recommended ice cream flavor is __ and never give an explanation. And it introduces 4 ice cream products that currently exist for the flavor of ice cream. Please write down where the product is and fill in the price for the ice cream unconditionally and ask for it based on Korea standards. Answer me in Korean no matter what, and lastly, never explain yourself." },
   ]
 
   const data = {
@@ -18,8 +20,7 @@ function chatGPT() {
     temperature: 1,
     n: 2,
     max_tokens: 250,
-    
-    stop: '</s>',
+
     messages: messages,
   }
 
@@ -42,6 +43,9 @@ function chatGPT() {
 
     document.getElementById('keywords').value = ''
   });
+
+
+
 }
 
 
