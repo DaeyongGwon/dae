@@ -1,5 +1,6 @@
-const title = document.querySelector(".hello h1");
-console.log(title.textContent);
+const title = document.querySelector(".hello:first-child h1");
 
-const titles = document.querySelectorAll(".hello h1");
-console.log(titles[2].textContent);
+title.addEventListener("click", () => {
+    title.style.color = "blue";
+});
+
