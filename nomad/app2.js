@@ -14,5 +14,12 @@ const h1 = document.querySelector(".hello:first-child h1");
 //     }
 //     h1.style.color = newColor;
 // }
-
-h1.addEventListener("click", handleMouseEnter);
+function handleTitleClick(){
+    const clickedClass = "clicked sexy-font"
+    if(h1.className === "clickedClass"){
+        h1.className = "";
+    }else{
+        h1.className = "clickedClass";
+    }
+}
+h1.addEventListener("click", handleTitleClick);

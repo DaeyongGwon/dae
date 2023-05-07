@@ -1,0 +1,16 @@
+body {
+    background-color: antiquewhite;
+}
+
+h1 {
+    color: blue;
+    transition: color .3s ease-in-out;
+}
+
+.clicked {
+    color: turquoise;
+}
+
+.sexy-font {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
