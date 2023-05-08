@@ -1,0 +1,62 @@
+.flex-box {
+    display: flex;
+}
+.container {
+    position: relative;
+}
+.left-size {
+    width: 15%;
+}
+
+.right-size {
+    width: 100%;
+}
+
+.right {
+    background-color: rgb(211, 148, 245);
+    height: 100vh;
+}
+
+.logo {
+    position: absolute;
+    height: 80px;
+}
+
+.menu {
+    position: relative;
+    top: 40px;
+}
+.category {
+    padding:3px 5px;
+    background-color: beige;
+    border-radius: 10px;
+    margin: 0 3px;
+
+}
+
+.text-center {
+    text-align: center;
+}
+
+.img-box {
+    width: 200px;
+    border-radius: 10px;
+
+}
+
+.movie-box {
+    margin: 0px 3px;
+    background-color: white;
+    border-radius: 10px;
+}
+.user-logo {
+    width: 30px;
+}
+
+.movie-info {
+    font-size: 12px;
+    margin-left: 3px;
+}
+.evenly {
+    justify-content: space-evenly;
+}
