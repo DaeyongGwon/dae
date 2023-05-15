@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <link rel="stylesheet" href="./index.css">
-        <title>chatGPT API</title>
-    </head>
-    <body>
-        <h1>아이스크림 </h1>
-        <div>원하시는 맛의 종류를 알려주세요.</div>
-        <input type="text" id="keywords" name="keywords" required />
-        <button onclick="chatGPT()">입력</button>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
+    <title>chatGPT API</title>
+  </head>
+  <body>
+    <div id="intro" class="intro-container">
+      <h1>맛 선택</h1>
+      <img src="./image/logo5.png" alt="chatdoge" style="width: 500px">
+      <div class="form-group1">
+        <label for="flavor">맛 선택</label>
+        <select id="flavor" name="flavor">
+          <option class="color" value="">선택하세요</option>
+          <option class="color" value="red">red</option>
+          <option class="color" value="orange">orange</option>
+          <option class="color" value="yellow">yellow</option>
+          <option class="color" value="green">green</option>
+          <option class="color" value="white">white</option>
+          <option class="color" value="brown">brown</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="keywords">키워드 입력</label>
+        <input type="text" id="keywords" name="keywords">
+      </div>
+        <button id="chat-btn" onclick="chatGPT()">입력</button>
+      </div>
+      <div id="result-container">
         <div id="result"></div>
-        <div id="loading">
-            <img src="https://studentrights.sen.go.kr/images/common/loading.gif">
+        <div id="loading" style="display: none;">
+          <img src="https://studentrights.sen.go.kr/images/common/loading.gif">
         </div>
+      </div>
+    </div>
 
-        <script src="./index.js"></script>
-    </body>
-    </html>
-    
-            
-
-
-
+    <script src="./index.js"></script>
+  </body>
+</html>

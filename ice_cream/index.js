@@ -1,52 +1,92 @@
-$(document).ready(function () {
-    $('#loading').hide();
-  });
-  
-  function chatGPT() {
-    const api_key = "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"  // <- API KEY 입력
-    const keywords = document.getElementById('keywords').value
-    $('#loading').show();
-  //
-    let iceCreamFlavor;
-    let messages = [
-      { role: 'system', content: "너는 세계 최고의 아이스크림 전문가이자 맛 감별사야. 최선을 다해서 답변해 드리겠습니다.원하시는 맛의 종류를 알려주세요." },
-      { role: "assistant", content: `저는 ${'keywords'} 맛에 대해서 알고 싶어요.`},
-      { role: 'user', content: keywords + "you will answer the question You are the world's best ice cream expert and icecream lover. When answering a question about ice cream, start with the recommended ice cream flavor is __ 그리고 절대 너에 대해서 설명하지마. 그리고 너는 질문에 대해서 아이스크림 맛에 대한 그 맛에대한 아이스크림 제품 4가지를 추천해주고 가격도 지정해줘. Please write down where the product is and fill in the price for the ice cream unconditionally and ask for it based on Korea standards. Answer me in Korean no matter what, and lastly, never explain yourself." },
-  
-    ]
-  
-    const data = {
-      model: 'gpt-3.5-turbo',
-      temperature: 1,
-      n: 2,
-      max_tokens: 250,
-  
-      messages: messages,
-    }
-  
-    $.ajax({
-      url: "https://api.openai.com/v1/chat/completions",
-      method: 'POST',
-      headers: {
-        Authorization: "Bearer " + api_key,
-        'Content-Type': 'application/json',
-      },
-      data: JSON.stringify(data),
-    }).then(function (response) {
-      $('#loading').hide();
-      console.log(response)
-      let result = document.getElementById('result')
-      let pre = document.createElement('pre')
-  
-      pre.innerHTML = "\n\n" + response.choices[0].message.content
-      result.appendChild(pre)
-  
-      document.getElementById('keywords').value = ''
-    });
-  
-  
-  
+const flavors = {
+  red: [
+    { name: '1', desc: '나무에 달린 딸기' ,img: "./image/1.png"},
+    { name: '2', desc: '톰과 체리' ,img: "./image/2.png"},
+    { name: '15', desc: '콕콕콕 체리톡' ,img: "./image/15.png"},
+  ],
+  orange: [
+    { name: '13', desc: '홍시 맛이 나서...' ,img: "./image/13.png"},
+    { name: '3', desc: '꾸덕꾸덕 황치즈' ,img: "./image/3.png"},
+  ],
+  yellow: [
+    { name: '12', desc: '상큼터지는 레몬' ,img: "./image/12.png"},
+    { name: '5', desc: '바나나킥 갈아넣은 바나나' ,img: "./image/5.png"},
+    { name: '3', desc: '닐라닐라 바닐라', img: "./image/3.png"},
+  ],
+  green: [
+    { name: '8', desc: '녹차마루' ,img: "./image/8.png"},
+    { name: '18', desc: '겨자맛' ,img: "./image/18.png"},
+  ],
+  white: [
+    { name: '7', desc: '요거트' ,img: "./image/7.png"},
+    { name: '9', desc: '누룽지' ,img: "./image/9.png"},
+    { name: '14', desc: '초코시럽 많이 주세요' ,img: "./image/14.png"},
+    { name: '16', desc: '깨 떨어지는' ,img: "./image/16.png"},
+  ],
+  brown: [
+    { name: '6', desc: '아메리카노 말고 바닐라 라떼' ,img: "./image/6.png"},
+    { name: '10', desc: '캐러멜 많이 주세요' ,img: "./image/10.png"},
+    { name: '11', desc: '진짜 초코' ,img: "./image/11.png"},
+    { name: '17', desc: '바닐라에 뿌려진 초코' ,img: "./image/17.png"},
+  ],
+};
+function chatGPT() {
+  const api_key = "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"  // <- API KEY 입력
+  const flavor = document.getElementById('flavor').value
+  const keywords = document.getElementById('keywords').value
+  console.log(flavor);
+
+  if (!flavors[flavor]) {
+    alert('맛을 선택해주세요!')
+    return
   }
-  
-  
-  
+  let messages = [
+    { role: "system", "content" : "You are the owner of the Pistachio ice cream parlor. I will recommend a menu according to the taste you choose."  },
+    { role: "assistant", "content" : `<div>${flavors[flavor]}</div>`  },
+    console.log(flavors[flavor]),
+  ]
+s
+  flavors[flavor].forEach((item) => {
+    // if (item.name.includes(keywords)) {
+      console.log(item);
+      messages.push({ role: "assistant", "content": `<img src="${item.img}"> ${item.desc}.`})
+      messages.push({ role: "assistant", "content": `Recommend 1 from ${flavors}` })
+      messages.push({ role: "assistant", "content": `${item.desc} flavor.` })
+
+      console.log(`${item.img}`);
+      console.log(`${item.desc}`);
+    // }
+  })
+
+  const data = {
+    model: 'gpt-3.5-turbo',
+    temperature: 1,
+    n: 2,
+    max_tokens: 250,
+    messages: messages,
+  }
+
+  $('#loading').show();
+
+  $.ajax({
+    url: "https://api.openai.com/v1/chat/completions",
+    method: 'POST',
+    headers: {
+      Authorization: "Bearer " + api_key,
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify(data),
+  }).then(function (response) {
+    $('#loading').hide();
+    console.log(response)
+    let result = document.getElementById('result')
+    let pre = document.createElement('pre')
+
+    pre.innerHTML = "\n\n" + response.choices[0].message.content
+    result.appendChild(pre)
+
+    document.getElementById('flavor').value = ''
+    document.getElementById('keywords').value = ''
+  });
+}
+
