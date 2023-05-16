@@ -11,7 +11,24 @@
     z-index: 99;
     text-align: center;
   }
-
+.form-group {
+  /* display: none; */
+}
+img {
+  width: 300px;
+}
+pre {
+  display: flex;
+  background-color: #E6E6FA;
+  padding: 5px;
+  overflow: auto;
+  white-space: pre-wrap;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
   #loading>img {
     position: absolute;
     top: 40%;

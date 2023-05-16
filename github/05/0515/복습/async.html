@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function greet() {
+            return new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                    resolve('hello')
+                }, 1000);
+            });
+        }
+        
+        // 그이름 지정없이 async 앞에 소괄호를 넣어서 함수명 없이 ()로 사용
+        (async function() {
+            var result = await greet();
+            console.log(result);
+        }) 
+        ();
+
+        //exec라는 함수 명을 지정해서 사용
+        async function exec() {
+            var result = await greet();
+            console.log(result);
+        }
+        exec();
+
+    </script>
+</body>
+</html>

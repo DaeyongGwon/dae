@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function changeBgColor(newColor, delay) {
+            return new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                    document.body.style.backgroundColor = newColor;
+                    resolve();
+                }, delay);
+            })
+        }
+
+        async function exec() {
+            await changeBgColor('blue', 300)
+            await changeBgColor('red', 300)
+            await changeBgColor('black', 300)
+            await changeBgColor('white', 300)
+            await changeBgColor('pink', 300)
+        }
+        exec();
+    </script>
+</body>
+</html>

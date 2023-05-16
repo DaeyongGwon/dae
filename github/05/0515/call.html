@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call</title>
+</head>
+<body>
+    <script>
+        function add(n1, n2) {
+            return new Promise (function(resolve, reject) {
+                setTimeout(function() {
+                    let result = n1 + n2;
+                    resolve(result);
+                }, 1000)
+            })
+        }
+            
+        function mul(n) {
+            return new Promise (function(resolve, reject) {
+                setTimeout(function() {
+                    let result = n * 2;
+                    //resolve(result);
+                    reject(new Error('의도적 에러'));
+                }, 700)
+            })
+        }
+            
+        function sub(n) {
+            return new Promise (function(resolve, reject) {
+                setTimeout(function() {
+                    let result = n - 1;
+                    resolve(result);
+                },500)
+            })
+        }
+    
+        //콜백 함수로 불러오기
+        /*add(4,3,function(x){
+            console.log('1: ',x);
+            mul(x,function(y) {
+                console.log('2: ', y);
+                sub(y,function(z){
+                    console.log('3: ', z);
+                })
+            })
+        })*/
+
+        //Promise 를 활용한 연속 출력.
+        add(4, 3)
+        .then(function(result){
+            console.log('add : ',result);
+            return mul(result);
+        })
+        .then(function(result){
+            console.log('mul : ',result);
+            return sub(result);
+        })
+        .then(function(result){
+            console.log('sub : ',result);
+        })
+        .catch(function(err){
+            console.log(err);
+        })
+
+    </script>
+</body>
+</html>
