@@ -13,5 +13,5 @@ function c() {
 }
 
 function d() {
-    console.log("ddddd");
+    console.log("ddddd");ㄹ
 }
