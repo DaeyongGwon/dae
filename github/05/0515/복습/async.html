@@ -8,28 +8,23 @@
 </head>
 <body>
     <script>
-        function greet() {
+        function changeBgColor(newColor, delay) {
             return new Promise(function(resolve, reject) {
                 setTimeout(function() {
-                    resolve('hello')
-                }, 1000);
-            });
+                    document.body.style.backgroundColor = newColor;
+                    resolve();
+                }, delay);
+            })
         }
-        
-        // 그이름 지정없이 async 앞에 소괄호를 넣어서 함수명 없이 ()로 사용
-        (async function() {
-            var result = await greet();
-            console.log(result);
-        }) 
-        ();
 
-        //exec라는 함수 명을 지정해서 사용
         async function exec() {
-            var result = await greet();
-            console.log(result);
+            await changeBgColor('blue', 300)
+            await changeBgColor('red', 300)
+            await changeBgColor('black', 300)
+            await changeBgColor('white', 300)
+            await changeBgColor('pink', 300)
         }
         exec();
-
     </script>
 </body>
 </html>

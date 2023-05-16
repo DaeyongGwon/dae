@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function changeBgColor(newColor, delay) {
+            return new Promise(function(resolve, reject){
+                setTimeout(function () {
+                    document.body.style.backgroundColor = newColor;
+                    resolve();
+                  }, delay);
+            })
+        }
+        /*  그냥 then으로 출력
+        function exec() {
+            changeBgColor('red', 1000)
+            .then(function(){
+                return changeBgColor('yellow', 1000)
+            })
+            .then(function(){
+                return changeBgColor('green', 1000)
+            })
+            .then(function() {
+                return changeBgColor('blue', 1000)
+            })
+            .then(function(){
+                console.log('END!');
+            });
+        }
+        */
+        async function exec() {
+            await changeBgColor('red', 1000);
+            await changeBgColor('yellow', 1000);
+            await changeBgColor('green', 1000);
+            await changeBgColor('blue', 1000);
+            console.log('END!');
+        }
+
+        exec();
+    </script>
+</body>
+</html>
