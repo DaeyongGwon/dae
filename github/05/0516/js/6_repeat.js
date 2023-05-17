@@ -33,5 +33,5 @@ console.log(result2);
 // reduce
 let result3 = words.reduce((acc, word) => {
     return acc + word.length;
-}, );
+}, 0);
 console.log(result3);

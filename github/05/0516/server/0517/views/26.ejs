@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h2>get으로 정보받기</h2>
+        <form action="/getForm" name="login" method="get">
+            <span>이름</span>
+            <input type="text" name="name" />
+            <fieldset>
+                <legend>성별</legend>
+                <label for="male">남자</label>
+                <input type="radio" id="male" name="gender" value="male" />
+                <label for="female">여자</label>
+                <input type="radio" id="female" name="gender" value="female" />
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>생년월일</legend>
+                <select name="year" id="year">
+                    <option value="year">2020</option>
+                    <option value="year">2021</option>
+                    <option value="year">2022</option>
+                </select>
+                <span>년</span>
+                <select name="month" id="month">
+                    <option value="month">1</option>
+                    <option value="month">2</option>
+                    <option value="month">3</option>
+                </select>
+                <span>월</span>
+                <select name="day" id="day">
+                    <option value="day">1</option>
+                    <option value="day">2</option>
+                    <option value="day">3</option>
+                </select>
+                <span>일</span>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>관심사</legend>
+                <input type="checkbox" id="check" name="check" value="여행" />
+                <label for="check">여행</label>
+                <input type="checkbox" id="check" name="check" value="패션" />
+                <label for="check">패션</label>
+                <input type="checkbox" id="check" name="check" value="음식" />
+                <label for="check">음식</label>
+            </fieldset>
+            <br />
+            <button type="submit">회원가입</button>
+        </form>
+
+        <h2>POST 정보받기</h2>
+        <form action="/postForm" name="login" method="post">
+            <span>이름</span>
+            <input type="text" name="name" />
+            <fieldset>
+                <legend>성별</legend>
+                <label for="male">남자</label>
+                <input type="radio" id="male" name="gender" value="male" />
+                <label for="female">여자</label>
+                <input type="radio" id="female" name="gender" value="female" />
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>생년월일</legend>
+                <select name="year" id="year">
+                    <option value="year">2020</option>
+                    <option value="year">2021</option>
+                    <option value="year">2022</option>
+                </select>
+                <span>년</span>
+                <select name="month" id="month">
+                    <option value="month">1</option>
+                    <option value="month">2</option>
+                    <option value="month">3</option>
+                </select>
+                <span>월</span>
+                <select name="day" id="day">
+                    <option value="day">1</option>
+                    <option value="day">2</option>
+                    <option value="day">3</option>
+                </select>
+                <span>일</span>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>관심사</legend>
+                <input type="checkbox" id="check" name="check" value="여행" />
+                <label for="check">여행</label>
+                <input type="checkbox" id="check" name="check" value="패션" />
+                <label for="check">패션</label>
+                <input type="checkbox" id="check" name="check" value="음식" />
+                <label for="check">음식</label>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>파일선택</legend>
+                <label for="file">원하는 파일</label>
+                <input type="file" id="file" name="check" value="" />
+                <br />
+                <label for="email">보낼 주소 : </label>
+                <input type="email" id="email" name="email" placeholder="___@___.com" />
+            </fieldset>
+            <br />
+            <button type="submit">회원가입</button>
+        </form>
+    </body>
+</html>
