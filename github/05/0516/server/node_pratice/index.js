@@ -36,7 +36,7 @@ app.post('/result27', (req, response) => {
     console.log(req.body);
     console.log(req.query);
     response.render('result27', {
-        title: '실습27번 해설입니다.',
+        title: '실습27번.',
         info: info,
     });
 });
