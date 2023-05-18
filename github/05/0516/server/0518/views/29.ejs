@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <h2>axios get 정보받기</h2>
+        <form name="register">
+            <label for="name">이름</label>
+            <input type="text" name="name" id="name" required />
+            <fieldset>
+                <legend>성별</legend>
+                <input type="radio" name="gender" value="남자" id="man" />
+                <label for="man">남자</label>
+                <input type="radio" name="gender" value="여자" id="woman" />
+                <label for="woman">여자</label>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>생년월일</legend>
+                <select name="birthYear" id="year" value="year">
+                    <% for(let i=1990; i < 2023; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                </select>
+                <label for="year">년</label>
+
+                <select name="birthMonth" id="month" value="year">
+                    <% for(let i=1; i < 13; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                </select>
+                <label for="month">월</label>
+
+                <select name="birthDay" id="day" value="day">
+                    <% for(let i=1; i <= 31; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                </select>
+                <label for="day">일</label>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>관심사</legend>
+                <input type="checkbox" id="trip" name="hobby" value="여행" />
+                <label for="trip">여행</label>
+                <input type="checkbox" id="fashion" name="hobby" value="패션" />
+                <label for="fashion">패션</label>
+                <input type="checkbox" id="food" name="hobby" value="음식" />
+                <label for="food">음식</label>
+            </fieldset>
+            <br />
+            <div class="result"></div>
+            <button type="button" onclick="axiosGet()">get 회원가입</button>
+            <button type="button" onclick="axiosPost()">post 회원가입</button>
+        </form>
+        <script>
+            result = document.querySelector('.result');
+            function axiosGet() {
+                console.log('axiosGet !!!!!!!!');
+                const form = document.forms['register'];
+                const data = {
+                    name: form.name.value,
+                    gender: form.gender.value,
+                    year: form.year.value,
+                    month: form.month.value,
+                    day: form.day.value,
+                    hobby: Array.from(form.querySelectorAll('input[name="hobby"]:checked')).map((input) => input.value),
+                };
+                axios({
+                    url: 'http://localhost:8000/axios',
+                    method: 'GET',
+                    params: data,
+                }).then((abc) => {
+                    console.log(abc);
+                    const { name, gender, year, month, day, hobby } = abc.data;
+                    console.log(hobby);
+                    result.textContent = `axios Get : 이름은 ${name}, 성별은 ${gender}, 생년월일은 ${year}-${month}-${day}, 관심사는 ${hobby.join(
+                        ', '
+                    )}`;
+                });
+            }
+            function axiosPost() {
+                console.log('axiosPost !!!!!!!!');
+                const form = document.forms['register'];
+                const data = {
+                    name: form.name.value,
+                    gender: form.gender.value,
+                    year: form.year.value,
+                    month: form.month.value,
+                    day: form.day.value,
+                    hobby: Array.from(form.querySelectorAll('input[name="hobby"]:checked')).map((input) => input.value),
+                };
+                axios({
+                    url: 'http://localhost:8000/axios',
+                    method: 'GET',
+                    params: data,
+                }).then((abc) => {
+                    console.log(abc);
+                    const { name, gender, year, month, day, hobby } = abc.data;
+                    console.log(hobby);
+                    result.textContent = `axios Post : 이름은 ${name}, 성별은 ${gender}, 생년월일은 ${year}-${month}-${day}, 관심사는 ${hobby.join(
+                        ', '
+                    )}`;
+                });
+            }
+        </script>
+    </body>
+</html>

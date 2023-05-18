@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <h2>과제 30</h2>
+        <form name="register">
+            <fieldset>
+                <legend>ID 로그인</legend>
+                <label for="name">👤</label>
+                <input type="text" name="id" id="id" required />
+                <br />
+                <label for="name">🔒</label>
+                <input type="password" name="pwd" id="pwd" required />
+
+                <button type="button" onclick="axiosPost()">로그인</button>
+                <br />
+                <div class="result"></div>
+            </fieldset>
+        </form>
+        <script>
+            result = document.querySelector('.result');
+            function axiosPost() {
+                console.log('axiosPost !!!!!!!!');
+                const form = document.forms['register'];
+                const data = {
+                    id: form.id.value,
+                    pwd: form.pwd.value,
+                };
+                axios({
+                    url: 'http://localhost:8000/axios',
+                    method: 'POST',
+                    data: data,
+                })
+                    .then((response) => {
+                        console.log(response);
+                        const { success, message } = response.data;
+                        console.log(response.data.success);
+                        if (success) {
+                            result.innerHTML = `<span style="color: blue;">${message}</span>`;
+                        } else {
+                            console.log(message);
+                            result.innerHTML = `<span style="color: red;">${message}</span>`;
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+        </script>
+    </body>
+</html>
