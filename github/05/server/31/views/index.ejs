@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원가입</title>
+    </head>
+    <body>
+        <fieldset>
+            <legend>회원가입</legend>
+            <form action="/register" method="post" enctype="multipart/form-data">
+                <label for="id">아이디 : </label>
+                <input type="text" name="id" />
+                <br />
+                <label for="pwd">패스워드 : </label>
+                <input type="password" name="pwd" />
+                <br />
+                <label for="username">이름 : </label>
+                <input type="text" name="username" />
+                <br />
+                <label for="age">나이 : </label>
+                <input type="text" name="age" />
+                <br />
+                <label for="profile_image">프로필 사진 : </label>
+                <input type="file" name="profile_image" id="profileImageInput" onchange="previewImage(event)" /><br />
+                <input type="submit" value="회원가입" />
+            </form>
+
+            <h2>프로필 사진</h2>
+            <img src="" id="profileImagePreview" style="max-width: 200px; max-height: 200px" />
+        </fieldset>
+
+        <script>
+            function previewImage(event) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const profileImagePreview = document.getElementById('profileImagePreview');
+                    profileImagePreview.src = reader.result;
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        </script>
+    </body>
+</html>

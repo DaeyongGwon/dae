@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <fieldset style="width: 300px">
+            <legend>싱글 파일업로드</legend>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="fileName" /><br />
+                <input type="text" name="title" /><br />
+                <button type="submit">업로드</button><br />
+            </form>
+            <br />
+            <legend>여러개 파일업로드</legend>
+            <form action="/upload/array" method="POST" enctype="multipart/form-data">
+                <input type="file" name="fileName" multiple /><br />
+                <button type="submit">업로드</button><br />
+            </form>
+            <br />
+            <legend>여러개 각각 파일업로드</legend>
+            <form action="/upload/fields" method="POST" enctype="multipart/form-data">
+                <input type="file" name="fileName1" />
+                <br />
+                <input type="file" name="fileName2" /><br />
+                <input type="submit" value="업로드" />
+            </form>
+            <br />
+            <legend>동적 파일 업로드</legend>
+            <input type="file" name="dynamicUpload" id="dynamicUpload" /><br />
+            <button type="button" onclick="upload()">업로드</button><br />
+            <br />
+            <img id="img" src="" width="200" />
+            <br />
+        </fieldset>
+
+        <script>
+            function upload() {
+                //form을 동적으로 제어
+                const formData = new FormData();
+                const file = document.getElementById('dynamicUpload');
+                formData.append('dynamicUpload', file.files[0]);
+                console.log(file);
+
+                axios({
+                    method: 'POST',
+                    url: '/dynamic',
+                    data: formData,
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }).then(function (res) {
+                    console.log(res);
+                    const img = document.querySelector('#img');
+                    img.setAttribute('src', res.data.path);
+                });
+            }
+        </script>
+    </body>
+</html>
