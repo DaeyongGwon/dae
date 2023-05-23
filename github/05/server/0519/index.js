@@ -1,5 +1,4 @@
 const express = require('express');
-const multer = require('multer');
 const path = require('path');
 const app = express();
 const PORT = 8000;
@@ -7,7 +6,8 @@ const PORT = 8000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//multer설정
+//multer 파일 업로드 경로 설정
+const multer = require('multer');
 const upload = multer({
     dest: 'uploads/',
 });
@@ -17,6 +17,7 @@ const uploadDetail = multer({
             done(null, 'uploads/');
         },
         filename(req, file, done) {
+            ㅌ;
             const ext = path.extname(file.originalname);
             done(null, path.basename('uploads', ext) + Date.now() + ext);
         },
