@@ -10,5 +10,5 @@ exports.main = (req, res) => {
 
 exports.getVisitor = (req, res) => {
     console.log(visitor.getVisitor());
-    res.render('visitor', { data: visitor.getVisitor() });
+    res.render('visitor', { commentInfos: visitor.getVisitor() });
 };
