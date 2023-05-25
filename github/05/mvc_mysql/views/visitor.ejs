@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <form name="visitor">
+            <fieldset>
+                <legend>방명록 등록</legend>
+                <input type="text" id="name" placeholder="사용자 이름" /><br />
+                <input type="text" id="comment" placeholder="방명록" /><br />
+                <button type="button" onclick="createVisitor()">등록</button>
+            </fieldset>
+        </form>
+        <hr />
+        <table>
+            <thead>
+                <tr border="1" , cellspacing="0">
+                    <th>ID</th>
+                    <th>작성자</th>
+                    <th>방명록</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i < data.length; i++) { %>
+                <tr>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].name %></td>
+                    <td><%= data[i].comment %></td>
+                    <td><button type="button">수정</button></td>
+                    <td><button type="button" onclick="rmData()">삭제</button></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <script>
+            function createVisitor() {
+                const tbody = document.querySelector('tbody');
+                const form = document.forms['visitor'];
+                console.log(form);
+                console.log(form.name.value);
+                if (form.name.value.length === 0 || form.comment.value.length === 0) {
+                    alert('이름 또는 방명록을 기입하세요!');
+                    return;
+                }
+                if (form.name.value.length > 10) {
+                    alert('이름은 10글자 미만으로 작성해주세요');
+                    return;
+                }
+                axios({
+                    method: 'POST',
+                    url: '/visitor/write',
+                    data: {
+                        name: form.name.value,
+                        comment: form.comment.value,
+                    },
+                })
+                    .then((res) => {
+                        console.log(res.data);
+                        return res.data;
+                    })
+                    .then((data) => {
+                        const html = `
+                            <tr>
+                                <td>${data.id}</td>
+                                <td>${data.name}</td>
+                                <td>${data.comment}</td>
+                                <td><button type="button">수정</button></td>
+                                <td><button type="button">삭제</button></td>
+                            </tr>
+                        `;
+                        tbody.insertAdjacentHTML('beforeend', html);
+                    });
+            }
+        </script>
+    </body>
+</html>
