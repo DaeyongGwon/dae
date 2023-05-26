@@ -13,13 +13,15 @@
                 <legend>방명록 등록</legend>
                 <input type="text" id="name" placeholder="사용자 이름" /><br />
                 <input type="text" id="comment" placeholder="방명록" /><br />
-                <button type="button" onclick="createVisitor()">등록</button>
+                <div id="register">
+                    <button type="button" onclick="createVisitor()">등록</button>
+                </div>
             </fieldset>
         </form>
         <hr />
-        <table>
+        <table border="1" cellspacing="0">
             <thead>
-                <tr border="1" , cellspacing="0">
+                <tr>
                     <th>ID</th>
                     <th>작성자</th>
                     <th>방명록</th>
@@ -29,25 +31,34 @@
             </thead>
             <tbody>
                 <% for(let i = 0; i < data.length; i++) { %>
-                <tr>
-                    <td><%= data[i].id %></td>
+                <tr id="tr_<%= data[i].id %>" style="text-align: center">
+                    <td>
+                        <a
+                            href="/visitor/get?id=<%= data[i].id %>"
+                            target="_blank"
+                            style="text-decoration: none; color: rgb(163, 42, 86)"
+                            ><%= data[i].id %>
+                        </a>
+                    </td>
                     <td><%= data[i].name %></td>
                     <td><%= data[i].comment %></td>
-                    <td><button type="button">수정</button></td>
-                    <td><button type="button" onclick="rmData()">삭제</button></td>
+                    <td>
+                        <button type="button" onclick="editVisitor('<%= data[i].id %>')">수정</button>
+                    </td>
+                    <td><button type="button" onclick="deleteVisitor('<%= data[i].id %>')">삭제</button></td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
-
         <script>
+            const tbody = document.querySelector('tbody');
+            const button = document.querySelector('#register');
+            const form = document.forms['visitor'];
             function createVisitor() {
-                const tbody = document.querySelector('tbody');
-                const form = document.forms['visitor'];
                 console.log(form);
                 console.log(form.name.value);
                 if (form.name.value.length === 0 || form.comment.value.length === 0) {
-                    alert('이름 또는 방명록을 기입하세요!');
+                    alert('이름 또는 방명록 기입하세요!');
                     return;
                 }
                 if (form.name.value.length > 10) {
@@ -67,16 +78,85 @@
                         return res.data;
                     })
                     .then((data) => {
+                        //insertAdjacentHTML: 특정 요소에 HTML 추가
+                        //innerHTML: 기존 노드 지우고 덮어씌움
                         const html = `
-                            <tr>
-                                <td>${data.id}</td>
-                                <td>${data.name}</td>
-                                <td>${data.comment}</td>
-                                <td><button type="button">수정</button></td>
-                                <td><button type="button">삭제</button></td>
-                            </tr>
-                        `;
+            <tr id="tr_${data.id}">
+                <td>${data.id}</td>
+                <td>${data.name}</td>
+                <td>${data.comment}</td>
+                <td><button type="button" onclick="editVisitor('${data.id}')">수정</button></td>
+                <td><button type="button" onclick="deleteVisitor('${data.id}')">삭제</button></td>
+            </tr>
+            `;
                         tbody.insertAdjacentHTML('beforeend', html);
+                    });
+            }
+            //수정하는 화면변경
+            function editVisitor(num) {
+                console.log(typeof num);
+                axios({
+                    method: 'GET',
+                    url: `/visitor/${Number(num)}`,
+                })
+                    .then((res) => {
+                        //console.log(res.data);
+                        return res.data;
+                    })
+                    .then((data) => {
+                        console.log('data', data);
+                        const form = document.forms['visitor'];
+                        form.name.value = data[0].name;
+                        form.comment.value = data[0].comment;
+                        const html = `
+                        <button type="button" onclick="edit('${num}')">수정완료</button>
+                        `;
+                        //console.log(button);
+                        //button.insertAdjacentHTML("beforeend", html);
+                        button.innerHTML = html;
+                    });
+            }
+            //수정확정
+            function edit(num) {
+                const form = document.forms['visitor'];
+                axios({
+                    method: 'PATCH',
+                    url: '/visitor/edit',
+                    data: {
+                        id: num,
+                        name: form.name.value,
+                        comment: form.comment.value,
+                    },
+                })
+                    .then((res) => {
+                        return res.data;
+                    })
+                    .then((data) => {
+                        //d console.log("data", data);
+                        const newData = document.querySelector(`#tr_${num}`).children;
+                        console.log(newData);
+                        newData[1].textContent = form.name.value;
+                        newData[2].textContent = form.comment.value;
+                    });
+            }
+            //삭제
+            function deleteVisitor(num) {
+                if (!confirm('삭제하시겠습니까?')) {
+                    return;
+                }
+                axios({
+                    method: 'DELETE',
+                    url: '/visitor/delete',
+                    data: {
+                        id: Number(num),
+                    },
+                })
+                    .then((res) => {
+                        return res.data;
+                    })
+                    .then((data) => {
+                        console.log(data);
+                        document.querySelector(`#tr_${num}`).remove();
                     });
             }
         </script>
