@@ -1,0 +1,6 @@
+.container {
+    border-radius: 1px solid black;
+    padding: 21px 20px 18px;
+    line-height: 20px;
+    text-align: center;
+}

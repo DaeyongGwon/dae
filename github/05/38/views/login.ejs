@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            .label {
+                font-size: 15px;
+                margin-right: 5px;
+            }
+            .input {
+                width: 80%;
+                font-size: 15px;
+                border: none;
+            }
+            .form_item_top {
+                width: 50%;
+                border-radius: 10px 10px 0px 0px; /* 외곽선 둥글기 */
+                display: flex;
+                align-items: center;
+                position: relative;
+                box-sizing: border-box;
+                max-width: 100%;
+                min-height: 50px;
+                padding: 0 10px 0 20px;
+                border: 1px solid #ccc; /* 외곽선 추가 */
+            }
+
+            .form_item_bottom {
+                width: 50%;
+                border-radius: 0px 0px 10px 10px; /* 외곽선 둥글기 */
+                display: flex;
+                align-items: center;
+                position: relative;
+                box-sizing: border-box;
+                max-width: 100%;
+                min-height: 50px;
+                padding: 0 10px 0 20px;
+                border: 1px solid #ccc; /* 외곽선 추가 */
+            }
+            .btn {
+                font-size: 20px;
+                width: 50%;
+                display: block;
+                margin-top: 13px;
+                padding: 17px 0;
+                border: 1px solid rgba(0, 0, 0, 0.06);
+                border-radius: 4px;
+                background-color: #03c75a;
+                box-shadow: 0 2px 4px 0 rgba(3, 199, 90, 0.12);
+                text-decoration: none;
+                color: #fff;
+            }
+        </style>
+        <title>로그인</title>
+    </head>
+    <body>
+        <form name="signup">
+            <div><h1>Yong</h1></div>
+            <div class="form_item_top">
+                <label class="label" for="userId">ID : </label>
+                <input class="input" type="text" id="userId" placeholder="ID" /><br />
+            </div>
+            <div class="form_item_bottom">
+                <label class="label" for="password">Pw : </label>
+                <input class="input" type="password" id="password" placeholder="PASSWORD" /><br />
+            </div>
+            <div id="login">
+                <button class="btn" type="button" onclick="login()">로그인</button>
+            </div>
+        </form>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            function login() {
+                const form = document.forms['signup'];
+                const userId = form.userId.value;
+                const password = form.password.value;
+                console.log(userId, password);
+                axios({
+                    method: 'POST',
+                    url: '/user/login',
+                    data: {
+                        userId: userId,
+                        password: password,
+                    },
+                })
+                    .then((res) => {
+                        console.log(res.data);
+                        return res.data;
+                    })
+                    .then((data) => {
+                        if (data.userId == userId && data.password == password) {
+                            alert('로그인 성공');
+                            window.location.href = '/user/profile';
+                        } else {
+                            alert('로그인 실패');
+                        }
+                    });
+            }
+        </script>
+    </body>
+</html>

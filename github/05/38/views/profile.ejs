@@ -1,0 +1,134 @@
+<!-- profile.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            .label {
+                font-size: 15px;
+                margin-right: 5px;
+            }
+            .input {
+                font-size: 15px;
+                border: none;
+            }
+
+            .form_item_top {
+                width: 50%;
+                border-radius: 10px 10px 0px 0px; /* 외곽선 둥글기 */
+                display: flex;
+                align-items: center;
+                position: relative;
+                box-sizing: border-box;
+                max-width: 100%;
+                min-height: 50px;
+                padding: 0 10px 0 20px;
+                border: 1px solid #ccc; /* 외곽선 추가 */
+            }
+            .form_item {
+                width: 50%;
+                border-radius: 0px; /* 외곽선 둥글기 */
+                display: flex;
+                align-items: center;
+                position: relative;
+                box-sizing: border-box;
+                max-width: 100%;
+                min-height: 50px;
+                padding: 0 10px 0 20px;
+                border: 1px solid #ccc; /* 외곽선 추가 */
+            }
+            .form_item_bottom {
+                width: 50%;
+                border-radius: 0px 0px 10px 10px; /* 외곽선 둥글기 */
+                display: flex;
+                align-items: center;
+                position: relative;
+                box-sizing: border-box;
+                max-width: 100%;
+                min-height: 50px;
+                padding: 0 10px 0 20px;
+                border: 1px solid #ccc; /* 외곽선 추가 */
+            }
+            .btn {
+                font-size: 20px;
+                width: 25%;
+                display: block;
+                margin-left: 10px;
+                padding: 17px 0px;
+                border: 1px solid rgba(0, 0, 0, 0.06);
+                border-radius: 10px;
+                background-color: #03c75a;
+                box-shadow: 0 2px 4px 0 rgba(3, 199, 90, 0.12);
+                text-decoration: none;
+                color: #fff;
+            }
+        </style>
+        <title>Profile</title>
+    </head>
+    <body>
+        <h1>Yong</h1>
+        <h3>개인 정보 페이지</h3>
+        <div class="form_item_top">
+            <label class="label" for="name">👤 : </label><br />
+            <input class="input" type="text" id="name" placeholder="이름" /><br />
+        </div>
+        <div class="form_item">
+            <label class="label" for="userId">ID : </label><br />
+            <input class="input" type="text" id="userId" placeholder="아이디" /><br />
+        </div>
+        <div class="form_item_bottom">
+            <label class="label" for="password">Pw : </label>
+            <input class="input" type="password" id="password" placeholder="비밀번호" />
+        </div>
+
+        <div class="view" style="display: flex; width: 75%; justify-content: flex-start; margin-top: 15px">
+            <button class="btn" onclick="userEdit()">회원 정보 수정</button>
+            <button class="btn" onclick="userDelete()">삭제</button>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            function userEdit() {
+                const name = document.getElementById('name').value;
+                const userId = document.getElementById('userId').value;
+                const password = document.getElementById('password').value;
+
+                axios
+                    .patch('/user/edit', { name, userId, password })
+                    .then((res) => {
+                        const user = res.data;
+                        const viewElement = document.querySelector('.view');
+                        console.log(res.params);
+                        viewElement.innerHTML = `
+                            <p>이름: ${user.name}</p>
+                            <p>아이디: ${user.userId}</p>
+                            <p>비밀번호: ${user.password}</p>
+                        `;
+                        console.log(res.data);
+                        alert('회원 정보가 수정되었습니다.');
+                        //window.location.reload();
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        alert('회원 정보 수정에 실패했습니다.');
+                    });
+            }
+
+            function userDelete() {
+                axios
+                    .delete('/user/delete')
+                    .then((res) => {
+                        console.log(res.data);
+                        alert('회원 정보가 삭제되었습니다.');
+                        window.location.href = '/user/login';
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        alert('회원 정보 삭제에 실패했습니다.');
+                    });
+            }
+        </script>
+    </body>
+</html>
