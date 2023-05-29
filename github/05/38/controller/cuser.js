@@ -1,5 +1,6 @@
 const User = require('../model/muser');
 
+//메인 페이지
 exports.main = (req, res) => {
     res.render('index');
 };
@@ -9,12 +10,12 @@ exports.getSignup = (req, res) => {
     res.render('signup');
 };
 
-//login
+//로그인
 exports.getLogin = (req, res) => {
     res.render('login');
 };
-//profile
 
+//프로필
 exports.getProfile = (req, res, next) => {
     const user = req.session.user;
     if (user) {
@@ -29,6 +30,7 @@ exports.getProfile = (req, res, next) => {
         res.render('profile', { user: null });
     }
 };
+
 exports.postSignup = (req, res) => {
     const { name, userId, password } = req.body;
     console.log(req.body);

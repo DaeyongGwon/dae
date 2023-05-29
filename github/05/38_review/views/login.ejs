@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h4>로그인</h4>
+        <form name="form_login">
+            <label for="userId">ID</label>
+            <input type="text" id="userId" required /><br />
+            <label for="password">password</label>
+            <input type="password" id="password" required /><br />
+            <button type="button" onclick="login()">제출</button>
+        </form>
+        <form action="/user/profile" method="POST" name="form_info">
+            <input type="hidden" id="userId" name="userId" />
+        </form>
+
+        <!-- axios CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            function login() {
+                const form = document.forms['form_login'];
+                //checkValidity() : 유효성 검사 입력란에 required 속성이 있으면 true, 없으면 false
+                console.log(form.checkValidity());
+                if (!form.checkValidity()) {
+                    alert('입력란을 확인해주세요');
+                    return;
+                }
+                axios({
+                    method: 'POST',
+                    url: '/user/login',
+                    data: {
+                        userId: form.userId.value,
+                        password: form.password.value,
+                    },
+                }).then((res) => {
+                    console.log('res : ', res);
+                    if (res.data.result === true) {
+                        alert('로그인 성공');
+                        //로그인 성공시 프로필 페이지로 데이터 전송
+                        const form_info = document.forms['form_info'];
+                        form_info.userId = res.data.value.userId;
+                        console.log('res : ', res.data.value.userId);
+                        // document.location.href = '/user/profile';
+                        form_info.submit();
+                    } else {
+                        alert('로그인 실패');
+                        location.reload();
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h4>회원가입</h4>
+        <form name="form_register">
+            <label for="name">name</label>
+            <input type="text" id="name" required /><br />
+            <label for="userId">ID</label>
+            <input type="text" id="userId" required /><br />
+            <label for="password">password</label>
+            <input type="password" id="password" required /><br />
+            <button type="button" onclick="register()">제출</button>
+        </form>
+        <div>
+            <a href="/user/login">로그인</a>
+        </div>
+        <!-- axios CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            //function register()
+            function register() {
+                const form = document.forms['form_register'];
+
+                //checkValidity() : 유효성 검사 입력란에 required 속성이 있으면 true, 없으면 false
+                console.log(form.checkValidity());
+                if (!form.checkValidity()) {
+                    alert('입력란을 확인해주세요');
+                    return;
+                }
+                axios({
+                    method: 'POST',
+                    url: '/user/signup',
+                    data: {
+                        name: form.name.value,
+                        userId: form.userId.value,
+                        password: form.password.value,
+                    },
+                }).then((res) => {
+                    console.log(res);
+                    if (res.data.result === true) {
+                        alert('회원가입 성공');
+                        document.location.href = '/user/login';
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
