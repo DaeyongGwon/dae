@@ -7,7 +7,7 @@ const conn = mysql.createConnection({
     database: 'kdy7',
 });
 
-// 회원가입 등록
+//아래에 코드는 db 연결을 확인하는 코드.
 conn.connect((err) => {
     if (err) {
         console.error('Error connecting to database: ', err);
@@ -55,7 +55,7 @@ exports.edit = (name, userId, password, callback) => {
         callback(rows);
     });
 };
-
+//Mysql에서 회원정보를 삭제하는 기능
 exports.delete = (userId, callback) => {
     conn.query(`DELETE FROM user WHERE userId=${userId}`, (err, rows) => {
         if (err) {

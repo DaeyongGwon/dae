@@ -68,11 +68,12 @@ exports.patchProfileEdit = (req, res) => {
         res.send({ result: true, name: name, userId: userId, password: password });
     });
 };
-//삭제
+//DB 삭제하는 기능 만들기
 exports.deleteProfile = (req, res) => {
+    const { userId } = req.body;
     console.log(req.body);
-    const { name, userId, password } = req.body;
-    User.delete(userId, (rows) => {
-        res.send({ result: true });
+    User.delete(userId, (result) => {
+        console.log(result);
+        res.send({ result: true, userId: userId });
     });
 };
