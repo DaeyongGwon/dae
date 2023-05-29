@@ -1,5 +1,5 @@
 //visitor 테이블 정의
-exports.visitor = (sequelize, DataTypes) => {
+const Visitor = (sequelize, DataTypes) => {
     return sequelize.define(
         'visitor', // sequelize에서 사용될 테이블명
         {
@@ -17,11 +17,6 @@ exports.visitor = (sequelize, DataTypes) => {
                 type: DataTypes.TEXT('medium'),
                 allowNull: true,
             },
-            created_at: {
-                type: DataTypes.DATE,
-                allowNull: false,
-                defaultValue: sequelize.literal('now()'),
-            },
         },
         {
             tableName: 'visitor', //실제 DB의 테이블명
@@ -30,3 +25,5 @@ exports.visitor = (sequelize, DataTypes) => {
         }
     );
 };
+
+module.exports = Visitor;

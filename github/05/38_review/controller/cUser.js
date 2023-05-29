@@ -13,46 +13,40 @@ exports.login = (req, res) => {
     res.render('login');
 };
 
-// Desc: profile controller
-
 // Desc: 회원가입 전송
 exports.cPostSignup = (req, res) => {
-    const { name, userId, password } = req.body;
-    User.mPostSignup(name, userId, password, (result) => {
+    User.mPostSignup(req.data, (result) => {
         res.send({ result: true });
     });
 };
 
 // Desc: 로그인 전송
 exports.cPostLogin = (req, res) => {
-    const { userId, password } = req.body;
-    User.mPostLogin(userId, password, (result) => {
-        if (result.length === 0) {
-            res.send({ result: false });
+    User.mPostLogin(req.body, (value) => {
+        if (value.length > 0) {
+            res.send({ result: true, data: value[0] });
         } else {
-            res.send({ result: true, value: result[0] });
+            res.send({ result: false });
         }
     });
 };
 
 // Desc: 회원정보 프로필 전송
 exports.cPostProfile = (req, res) => {
-    const { userId } = req.body;
-    User.mPostProfile(userId, (result) => {
-        if (result.length === 0) {
-            res.send({ result: false });
+    User.mPostProfile(req.body, (value) => {
+        console.log('value : ', value);
+        if (result.length > 0) {
+            res.render('profile', { result: true, data: result[0] });
         } else {
-            req.session.userId = userId;
-            console.log('result[0] : ', result);
-            res.render('profile', { data: result[0] });
+            res.send({ result: false });
         }
     });
 };
 
 // Desc: 회원정보 수정 전송
 exports.cPostEdit = (req, res) => {
-    const { name, userId, password } = req.body;
-    User.mPostEdit(name, userId, password, () => {
+    console.log('req.body : ', req.body);
+    User.mPostEdit(req.body, () => {
         res.send({ result: true });
     });
 };

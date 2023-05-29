@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h4>로그인</h4>
+    <form name="form_login">
+      <label for="userid">ID</label>
+      <input type="text" id="userid" required /><br />
+      <label for="pw">PASSWORD</label>
+      <input type="password" id="pw" required /><br />
+      <button type="button" onclick="login()">로그인</button>
+    </form>
+    <form action="/user/profile" method="POST" name="form_info">
+      <input type="hidden" id="userid" name="userid" />
+    </form>
+    <div>
+      <a href="/user/signup">회원가입</a>
+    </div>
+
+    <script>
+      function login() {
+        const form = document.forms["form_login"];
+
+        if (!form.checkValidity()) {
+          return;
+        }
+
+        axios({
+          method: "POST",
+          url: "/user/signin",
+          data: {
+            userid: form.userid.value,
+            pw: form.pw.value,
+          },
+        }).then((res) => {
+          console.log(res.data);
+          // res.data = {
+          //   data:{id: 1, userid: 'test', name: 'hi', pw: '123'},
+          //   result: true
+          // }
+
+          if (res.data.result) {
+            alert("로그인 성공");
+            const form_info = document.forms["form_info"];
+            form_info.userid.value = res.data.data.userid;
+            form_info.submit();
+          } else {
+            alert("로그인 실패");
+            form_login.reset();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

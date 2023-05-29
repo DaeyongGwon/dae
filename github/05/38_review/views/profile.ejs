@@ -4,68 +4,63 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <title>Document</title>
     </head>
     <body>
-        <!-- 회원정보 -->
         <h4>회원정보</h4>
-        <a href="/user">메인 페이지</a>
+        <a href="/user">MAIN PAGE로</a>
         <form name="form_profile">
-            <label for="name">ID</label>
-            <input type="text" id="userId" value="<%= data.userId %>" placeholder="<%= data.userId %>" required /><br />
-            <label for="name">name</label>
-            <input type="text" id="name" value="<%= data.name %>" placeholder="<%= data.name %>" required /><br />
-            <label for="password">password</label>
-            <input
-                type="password"
-                id="password"
-                value="<%= data.password %>"
-                placeholder="<%= data.password %>"
-                required
-            /><br />
-            <button type="button" onclick="update()">수정</button>
+            <input type="hidden" value="<%= data.id %>" id="id" />
+            <label for="userid">ID</label>
+            <input type="text" id="userid" value="<%= data.userid %>" required /><br />
+            <label for="pw">PASSWORD</label>
+            <input type="password" id="pw" value="<%= data.pw %>" required /><br />
+            <label for="username">NAME</label>
+            <input type="text" id="username" value="<%= data.name %>" required /><br />
+            <button type="button" onclick="edit()">수정</button>
             <button type="button" onclick="del()">삭제</button>
-
-            <!-- axios CDN -->
-            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-            <script>
-                const form = document.forms['form_profile'];
-                function update() {
-                    if (!confirm('수정하시겠습니까?')) {
-                        return;
-                    }
-                    axios({
-                        method: 'PATCH',
-                        url: '/user/profile/edit',
-                        data: {
-                            name: form.name.value,
-                            password: form.password.value,
-                        },
-                    }).then((res) => {
-                        console.log(res);
-                        if (res.data.result === true) {
-                            alert('수정 성공');
-                        } else {
-                            alert('수정 실패');
-                        }
-                    });
-                }
-                function del() {
-                    if (!confirm('삭제하시겠습니까?')) {
-                        return;
-                    }
-                    axios({
-                        method: 'DELETE',
-                        url: '/user/profile/delete',
-                    }).then((res) => {
-                        console.log(res);
-                        if (res.data.result === true) {
-                            alert('삭제 성공');
-                            document.location.href = '/user';
-                        }
-                    });
-                }
-            </script>
         </form>
+        <script>
+            const form = document.forms['form_profile'];
+            function edit() {
+                if (!form.checkValidity()) {
+                    return;
+                }
+
+                axios({
+                    method: 'PATCH',
+                    url: '/user/profile/edit',
+                    data: {
+                        id: form.id.value,
+                        userid: form.userid.value,
+                        name: form.username.value,
+                        pw: form.pw.value,
+                    },
+                }).then((res) => {
+                    if (res.data.result) {
+                        alert('회원정보 수정완료!!!');
+                    }
+                });
+            }
+            function del() {
+                if (!form.checkValidity()) {
+                    return;
+                }
+
+                axios({
+                    method: 'DELETE',
+                    url: '/user/profile/del',
+                    data: {
+                        id: form.id.value,
+                    },
+                }).then((res) => {
+                    if (res.data.result) {
+                        alert('삭제완료');
+                        document.location.href = '/user';
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
