@@ -40,13 +40,13 @@ exports.mPostLogin = (userId, password, callback) => {
 
 //프로필
 exports.mPostProfile = (data, callback) => {
-    const query = `SELECT * FROM user WHERE userId='${data.userId}'`;
+    const query = `SELECT * FROM user WHERE userId='${data}'`;
     conn.query(query, (err, rows) => {
         if (err) {
             console.log(err);
         }
         console.log('프로필 rows : ', rows);
-        callback('mPostProfile', rows);
+        callback(rows);
     });
 };
 

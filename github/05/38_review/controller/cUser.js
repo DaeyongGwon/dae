@@ -30,7 +30,6 @@ exports.cPostLogin = (req, res) => {
         if (result.length === 0) {
             res.send({ result: false });
         } else {
-            req.session.userId = userId;
             res.send({ result: true, value: result[0] });
         }
     });
@@ -44,6 +43,7 @@ exports.cPostProfile = (req, res) => {
             res.send({ result: false });
         } else {
             req.session.userId = userId;
+            console.log('result[0] : ', result);
             res.render('profile', { data: result[0] });
         }
     });
