@@ -1,5 +1,6 @@
 const models = require('../models');
 const { Op } = require('sequelize');
+const crypto = require('crypto');
 
 //render : index.ejs
 exports.index = (req, res) => {
@@ -15,13 +16,20 @@ exports.signin = (req, res) => {
     //views/signin.ejs
     res.render('signin');
 };
+
+//패스워드 암호화
+const createHashedPassword = (pw) => {
+    const salt = 'kdt7';
+    return crypto.pbkdf2Sync(pw, salt, 100, 64, 'sha512').toString('base64');
+};
+
 //회원가입
 exports.Cpost_signup = (req, res) => {
     models.user
         .create({
             name: req.body.name,
             userid: req.body.userid,
-            pw: req.body.pw,
+            pw: createHashedPassword(req.body.pw),
         })
         .then((result) => {
             res.send({
@@ -36,7 +44,23 @@ exports.Cpost_signup = (req, res) => {
             res.send({ result: false });
         });
 };
-//로그인
+// 암호화된 패스워드를 비교해서 일치하면 로그인
+exports.Cpost_signin = async (req, res) => {
+    const User = await models.user.findOne({
+        where: {
+            userid: req.body.userid,
+        },
+    });
+    console.log('해쉬비번 : ', createHashedPassword(req.body.pw));
+    console.log('User.dataValues : ', User.dataValues);
+    if (createHashedPassword(req.body.pw) === User.dataValues.pw) {
+        res.send({ result: true, data: User.dataValues });
+    } else {
+        res.send({ result: false });
+    }
+};
+
+/*암호화 하기 전
 exports.Cpost_signin = (req, res) => {
     models.user
         .findOne({
@@ -62,6 +86,8 @@ exports.Cpost_signin = (req, res) => {
             res.send({ result: false });
         });
 };
+*/
+
 //회원정보
 exports.Cpost_profile = (req, res) => {
     models.user

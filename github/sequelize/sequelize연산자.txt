@@ -1,0 +1,30 @@
+//연산자
+// Op.get(초과), Op.gte(이상), Op.lt(미만), Op.lte(이하)
+// Op.ne( 같지않음), Op.or(또는), Op.in(배열 요소 중 하나), Op.notIn(배열 요소와 모두 다름)
+//SELECT * FROM user WHERE id > 2;
+models.user.findAll({
+    where: {
+        id: { [Op.gt]: 2 },
+    },
+});
+
+//SELECT * FROM user WHERE id > OR name = 'bye';
+modules.user.findAll({
+    where: {
+        [Op.or]: [{ id: { [Op.gt]: 2 } }, { name: 'bye' }],
+    },
+});
+
+//SELECT * name, userid FROM user ORDER BY id DESC;
+models.user.findAll({
+    attributes: ['name', 'userid'],
+    order: [['id', 'DESC']],
+});
+
+//SELECT * FROM name, userid FROM user ORDER By id DESC LIMIT 10 OFFSET 5;
+models.user.findAll({
+    attributes: ['name', 'userid'],
+    order: [['id', 'DESC']],
+    limit: 10,
+    offset: 5,
+});
