@@ -53,6 +53,7 @@
                 }).then((res) => {
                     if (res.data.result) {
                         alert('회원정보 수정완료!!!');
+                        document.location.href = '/user';
                     } else {
                         alert('회원정보 수정실패!!!');
                     }
@@ -63,7 +64,6 @@
                 if (!form.checkValidity()) {
                     return;
                 }
-
                 axios({
                     method: 'DELETE',
                     url: '/user/profile/del',

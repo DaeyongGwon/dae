@@ -111,7 +111,7 @@ exports.Cedit_profile = (req, res) => {
             {
                 name: req.body.name,
                 userid: req.body.userid,
-                pw: req.body.pw,
+                pw: createHashedPassword(req.body.pw),
             },
             {
                 where: { id: req.body.id },
