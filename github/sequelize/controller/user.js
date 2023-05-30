@@ -1,20 +1,19 @@
 const models = require('../models');
 
+//render : index.ejs
 exports.index = (req, res) => {
-    //views/index.ejs
     res.render('index');
 };
-
+//render : signup.ejs
 exports.signup = (req, res) => {
     //views/signup.ejs
     res.render('signup');
 };
-
+//render : signin.ejs
 exports.signin = (req, res) => {
     //views/signin.ejs
     res.render('signin');
 };
-
 //회원가입
 exports.Cpost_signup = (req, res) => {
     models.user
@@ -38,14 +37,6 @@ exports.Cpost_signup = (req, res) => {
 };
 //로그인
 exports.Cpost_signin = (req, res) => {
-    // user.Mpost_signin(req.body, (value) => {
-    //     if (value.length > 0) {
-    //         res.send({ result: true, data: value[0] });
-    //     } else {
-    //         res.send({ result: false });
-    //     }
-    // });
-    // 위 코드 sequelize/models/user.js에서 정의한 User 모델의 메서드를 이용해 로그인 기능을 구현할 수 있습니다.
     models.user
         .findOne({
             where: {
@@ -70,16 +61,6 @@ exports.Cpost_signin = (req, res) => {
 };
 //회원정보
 exports.Cpost_profile = (req, res) => {
-    // user.Mpost_profile(req.body, (value) => {
-    //     console.log(value);
-    //     if (value.length > 0) {
-    //         res.render('profile', { result: true, data: value[0] });
-    //         // res.send({ result: true, ...value });
-    //     } else {
-    //         res.send({ result: false });
-    //     }
-    // });
-    // 위 코드 sequelize/models/user.js에서 정의한 User 모델의 메서드를 이용해 회원정보 기능을 구현할 수 있습니다.
     models.user
         .findOne({
             where: {
