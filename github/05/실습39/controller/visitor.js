@@ -34,25 +34,17 @@ exports.CpostVisitor = (req, res) => {
 };
 
 //수정
-exports.CpatchVisitor = (req, res) => {
+exports.CeditVisitor = (req, res) => {
     models.visitor
-        .update(
-            {
-                name: req.body.name,
-                comment: req.body.comment,
-            },
-            {
-                where: { id: req.body.id },
-            }
-        )
-        .then(() => {
+        .update({ name: req.body.name, comment: req.body.comment }, { where: { id: req.body.id } })
+        .then((result) => {
             res.send({ result: true });
         });
 };
 
-//삭제
-exports.CdeleteVisitor = (req, res) => {
-    models.visitor.destroy({ where: { id: req.body.id } }).then(() => {
+//삭제하기
+exports.CdelVisitor = (req, res) => {
+    models.visitor.destroy({ where: { id: req.body.id } }).then((result) => {
         res.send({ result: true });
     });
 };

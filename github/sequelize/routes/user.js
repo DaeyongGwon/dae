@@ -17,9 +17,9 @@ router.post('/signin', controller.Cpost_signin);
 //POST localhost:8000/user/profile
 router.post('/profile', controller.Cpost_profile);
 //PATCH localhost:8000/user/profile/edit
-// router.patch("/profile/edit", controller.Cedit_profile);
-// //DELETE localhost:8000/user/profile/del
-// router.delete("/profile/del", controller.Cdel_profile);
+router.patch('/profile/edit', controller.Cedit_profile);
+//DELETE localhost:8000/user/profile/del
+router.delete('/profile/del', controller.Cdel_profile);
 
 //모듈사용
 module.exports = router;

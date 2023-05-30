@@ -49,7 +49,7 @@
                         console.log(form_info.profile_userid);
                         form_info.profile_userid.value = res.data.data.userid;
                         console.log('폼인포 콘솔로그', form_info.profile_userid);
-                        document.location.href = '/user/profile';
+                        location.href = '/user/profile';
                         form_info.submit();
                     } else {
                         alert('로그인 실패');
