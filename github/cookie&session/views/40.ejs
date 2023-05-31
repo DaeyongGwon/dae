@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>실습 40번</h1>
+        <h3>쿠키</h3>
+
+        <% if (showModal) { %>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">안내</h1>
+                    </div>
+                    <div class="modal-body">익스플로러 종료안내</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="hideModal()">오늘 하루 안보기</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var showModal = getCookie('showModal');
+                if (showModal !== 'false') {
+                    $('#exampleModal').modal('show');
+                }
+            });
+
+            function hideModal() {
+                $('#exampleModal').modal('hide');
+                var expires = new Date();
+                expires.setHours(23, 59, 59, 0); // Set expiry to end of the day
+                document.cookie = 'showModal=false; expires=' + expires.toUTCString() + '; path=/;';
+            }
+
+            function getCookie(name) {
+                var cookieArr = document.cookie.split(';');
+                for (var i = 0; i < cookieArr.length; i++) {
+                    var cookiePair = cookieArr[i].split('=');
+                    if (name === cookiePair[0].trim()) {
+                        return cookiePair[1];
+                    }
+                }
+                return null;
+            }
+        </script>
+        <% } %>
+    </body>
+</html>
