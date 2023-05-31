@@ -1,6 +1,15 @@
 const express = require('express');
 const app = express();
 const PORT = 8000;
+//session 설정
+const session = require('express-session');
+app.use(
+    session({
+        secret: 'secret key',
+        resave: false,
+        saveUninitialized: true,
+    })
+);
 
 //템플릿
 app.set('view engine', 'ejs');

@@ -24,6 +24,7 @@ exports.Cpost_signup = (req, res) => {
             pw: req.body.pw,
         })
         .then((result) => {
+            req.session.user = result; // 세션에 사용자 정보 저장
             res.send({
                 result: true,
                 userid: result.userid,
@@ -49,6 +50,7 @@ exports.Cpost_signin = (req, res) => {
         })
         .then((value) => {
             if (value) {
+                req.session.user = value; // 세션에 사용자 정보 저장
                 // 검색된 사용자 정보가 존재할 경우
                 console.log('로그인 성공');
                 res.send({ result: true, data: value });
@@ -61,6 +63,11 @@ exports.Cpost_signin = (req, res) => {
             console.log('로그인 오류', err);
             res.send({ result: false });
         });
+};
+// 로그아웃
+exports.Cget_signout = (req, res) => {
+    req.session.destroy(); // 세션 파기
+    res.send({ result: true });
 };
 //회원정보
 exports.Cpost_profile = (req, res) => {

@@ -13,7 +13,8 @@ router.post('/signup', controller.Cpost_signup);
 router.get('/signin', controller.signin);
 //POST localhost:8000/user/signin
 router.post('/signin', controller.Cpost_signin);
-
+//POST localhost:8000/user/signout
+router.get('/signout', controller.Cget_signout);
 //POST localhost:8000/user/profile
 router.post('/profile', controller.Cpost_profile);
 //PATCH localhost:8000/user/profile/edit
