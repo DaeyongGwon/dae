@@ -16,7 +16,10 @@ exports.signin = (req, res) => {
     //views/signin.ejs
     res.render('signin');
 };
-
+exports.signout = (req, res) => {
+    req.session.destroy(); // 세션 파기
+    res.send({ result: true });
+};
 //패스워드 암호화
 const createHashedPassword = (pw) => {
     const salt = 'kdt7';
@@ -32,6 +35,7 @@ exports.Cpost_signup = (req, res) => {
             pw: createHashedPassword(req.body.pw),
         })
         .then((result) => {
+            req.session.user = result; // 세션에 사용자 정보 저장
             res.send({
                 result: true,
                 userid: result.userid,
@@ -54,6 +58,7 @@ exports.Cpost_signin = async (req, res) => {
     console.log('해쉬비번 : ', createHashedPassword(req.body.pw));
     console.log('User.dataValues : ', User.dataValues);
     if (createHashedPassword(req.body.pw) === User.dataValues.pw) {
+        req.session.user = User.dataValues; // 세션에 사용자 정보 저장
         res.send({ result: true, data: User.dataValues });
     } else {
         res.send({ result: false });

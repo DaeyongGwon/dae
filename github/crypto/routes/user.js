@@ -11,6 +11,8 @@ router.post('/signup', controller.Cpost_signup);
 
 //GET localhost:8000/user/signin
 router.get('/signin', controller.signin);
+//GET localhost:8000/user/signout
+router.get('/signout', controller.signout);
 //POST localhost:8000/user/signin
 router.post('/signin', controller.Cpost_signin);
 
