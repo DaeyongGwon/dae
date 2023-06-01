@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 8080;
+const PORT = 8000;
 //세션 설정
 const session = require('express-session');
 app.use(
