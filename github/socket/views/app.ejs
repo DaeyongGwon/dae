@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .chat-list {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            .message {
+                display: inline-block;
+                padding: 5px;
+                border-radius: 5px;
+                margin-bottom: 5px;
+            }
+
+            .chat-list .message.self {
+                align-self: flex-end;
+                background-color: lightgreen;
+            }
+
+            .message.other {
+                align-self: flex-start;
+                background-color: lightblue;
+            }
+
+            .message.whisper {
+                color: white;
+                background-color: purple;
+            }
+        </style>
+    </head>
+    <body>
+        <h4>Socket</h4>
+        <div class="nick-box">
+            <input type="text" id="nickname" />
+            <button type="button" onclick="entry()">입장</button>
+        </div>
+        <div class="chat-box">
+            <div id="chat-list" class="chat-list"></div>
+            <select id="selected-nick">
+                <option value="전체">전체</option>
+            </select>
+            <input type="text" id="message" />
+            <button type="button" onclick="sendMessage()">전송</button>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io();
+            socket.on("connect", () => {
+                console.log(`client Connected >>`, socket.id);
+            });
+            socket.on("notice", (msg) => {
+                const list = document.querySelector("#chat-list");
+                list.insertAdjacentHTML("beforeend", `<div class="message">${msg}</div>`);
+            });
+            function entry() {
+                const id = document.querySelector("#nickname").value;
+                socket.emit("setNick", id);
+            }
+            function sendMessage() {
+                const msg = document.querySelector("#message").value;
+                const selectedNick = document.querySelector("#selected-nick").value;
+                const nick = document.querySelector("#nickname").value;
+                if (selectedNick === "전체") {
+                    socket.emit("sendToAll", { nick, msg });
+                } else {
+                    socket.emit("sendToSelected", { nick, selectedNick, msg });
+                }
+            }
+            socket.on("newMessage", (data) => {
+                const chat = document.querySelector("#chat-list");
+                const messageClass = data.nick === document.querySelector("#nickname").value ? "self" : "other";
+                const messageContent = data.selectedNick === "전체" ? `${data.nick} : ${data.msg}` : `(귓속말) ${data.nick} : ${data.msg}`;
+                const messageClassName = data.selectedNick === "전체" ? "" : "whisper";
+                chat.insertAdjacentHTML("beforeend", `<div class="message ${messageClass} ${messageClassName}">${messageContent}</div>`);
+            });
+            socket.on("updateNick", (data) => {
+                let option = "<option>전체</option>";
+                for (const key in data) {
+                    console.log(key, data[key]);
+                    option += `<option value=${key}>${data[key]}</option>`;
+                    document.querySelector("#selected-nick").innerHTML = option;
+                }
+            });
+            socket.on("error", (data) => {
+                alert(data);
+            });
+        </script>
+    </body>
+</html>
