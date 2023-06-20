@@ -1,0 +1,60 @@
+.test {
+    text-align: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.test h2 {
+    text-align: center;
+    width: 200px;
+    background-color: bisque;
+    color: rgb(225, 174, 111);
+}
+
+.box {
+    display: flex;
+}
+.red {
+    background-color: red;
+    width: 100px;
+    height: 50px;
+}
+
+.orange {
+    background-color: orange;
+    width: 100px;
+    height: 100px;
+}
+
+.yellow {
+    background-color: yellow;
+    width: 100px;
+    height: 150px;
+}
+
+.green {
+    background-color: green;
+    width: 100px;
+    height: 200px;
+}
+
+.blue {
+    background-color: blue;
+    width: 100px;
+    height: 250px;
+}
+
+.navy {
+    background-color: navy;
+    width: 100px;
+    height: 300px;
+}
+
+.purple {
+    background-color: purple;
+    width: 100px;
+    height: 350px;
+}
