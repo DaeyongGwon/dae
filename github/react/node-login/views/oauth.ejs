@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div>token</div>
+
+        <!-- axios cdn -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            // 토큰으로 보내줄 값의 code
+            const url = new URL(window.location.href);
+            const code = url.searchParams.get("code");
+            axios({
+                method: "post",
+                url: "https://kauth.kakao.com/oauth/token",
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded",
+                },
+                data: `grant_type=authorization_code&client_id=f44b2c32647179cef6198c1662a43b94&redirect_uri=http://localhost:3000/oauth&code=${code}`,
+            })
+                .then((res) => {
+                    console.log(res);
+                    // 토큰을 받아온다.
+                    const token = res.data.access_token;
+                    // 토큰을 이용해서 사용자 정보를 가져온다.
+                    axios({
+                        method: "get",
+                        url: "https://kapi.kakao.com/v2/user/me",
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    })
+                        .then((res) => {
+                            console.log("res : ", res.data);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        </script>
+    </body>
+</html>

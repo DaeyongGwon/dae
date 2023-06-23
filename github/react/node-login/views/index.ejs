@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button type="button" onclick="kakaoLogin()">카카오로그인</button>
+
+        <!-- axios cdn -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            const REST_API_KEY = "f44b2c32647179cef6198c1662a43b94";
+            const REDIRECT_URI = "http://localhost:3000/oauth";
+            const url = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
+
+            function kakaoLogin() {
+                window.location.href = url;
+            }
+        </script>
+    </body>
+</html>
