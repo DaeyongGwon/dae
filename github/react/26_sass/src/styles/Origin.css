@@ -1,0 +1,38 @@
+/* Origin.js 에 맞는 빨주노초파남보 박스 만들기 */
+
+.Origin {
+    display: flex;
+}
+
+.Origin .box {
+    width: 100px;
+    height: 100px;
+}
+
+.Origin .red {
+    background-color: red;
+}
+
+.Origin .orange {
+    background-color: orange;
+}
+
+.Origin .yellow {
+    background-color: yellow;
+}
+
+.Origin .green {
+    background-color: green;
+}
+
+.Origin .blue {
+    background-color: blue;
+}
+
+.Origin .navy {
+    background-color: navy;
+}
+
+.Origin .indigo {
+    background-color: indigo;
+}

@@ -1,0 +1,70 @@
+$color-red: red;
+$color-orange: orange;
+$color-yellow: yellow;
+$color-green: green;
+$color-blue: blue;
+$color-indigo: indigo;
+$color-purple: purple;
+$color-pink: pink;
+
+$animation-duration: 0.4s;
+
+//56
+
+$circle-big: 300px;
+$circle-middle: 100px;
+$circle-small: 50px;
+
+@mixin color-box($size) {
+    width: $size;
+    height: $size;
+    border: 1px solid black;
+}
+
+@mixin color-circle($size) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+//mixin을 이용해 시계방향으로 10 만큼 움직이는 핑크원, 20만큼 움직이는 노란색원, 30만큼 움직이는 초록 원 만들기
+@mixin color-circle-animation($duration, $delay) {
+    @keyframes circle-animation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .pink {
+        background-color: pink;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        animation: circle-animation $duration linear infinite;
+        animation-delay: $delay;
+    }
+
+    .yellow {
+        background-color: yellow;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        animation: circle-animation $duration linear infinite;
+        animation-delay: $delay + 0.4s;
+        transform: translateX(20px);
+    }
+
+    .green {
+        background-color: green;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        animation: circle-animation $duration linear infinite;
+        animation-delay: $delay + 0.8s;
+        transform: translateX(30px);
+    }
+}
