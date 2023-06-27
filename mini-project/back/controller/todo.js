@@ -8,18 +8,15 @@ exports.getTodo = async (req, res) => {
         const todos = await models.todo.findAll({});
         res.json(todos);
     } catch (error) {
-        res.status(500).json({ error: "데이터를 가져올 수 없습니다" });
+        res.status(500).json({ error: "데이터를 가져올 수 없습니다." });
     }
 };
-
 // 새로운 todo 생성
 exports.createTodo = async (req, res) => {
-    const { id, title, done } = req.body;
+    const { title } = req.body;
     try {
         const newTodo = await models.todo.create({
-            id,
             title,
-            done,
         });
         res.json(newTodo);
     } catch (error) {

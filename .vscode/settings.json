@@ -1,3 +1,4 @@
 {
-    "CodeGPT.query.language": "Korean"
+    "CodeGPT.query.language": "Korean",
+    "cSpell.words": ["fetchdata", "todos"]
 }

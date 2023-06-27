@@ -4,7 +4,7 @@ const controller = require("../controller/todo");
 const router = express.Router();
 
 // 전체 todo 조회
-router.get("/todos", controller.getTodo);
+router.get("/todo", controller.getTodo);
 
 // 새로운 todo 생성
 router.post("/todo", controller.createTodo);

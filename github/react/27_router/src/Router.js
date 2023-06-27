@@ -4,12 +4,12 @@ import About from "./pages/About";
 import App from "./App";
 import User from "./pages/User";
 import UserDetail from "./pages/UserDetail";
+import Comment from "./pages/Comment";
 
 const RouterData = createBrowserRouter([
     {
         path: "/",
         element: <App />,
-
         children: [
             {
                 path: "",
@@ -19,13 +19,16 @@ const RouterData = createBrowserRouter([
                 path: "about",
                 element: <About />,
             },
+            {
+                path: "redirect",
+                element: <About />,
+            },
         ],
         errorElement: <div>404</div>,
     },
     {
         path: "/user",
         element: <App />,
-
         children: [
             {
                 path: "",
@@ -34,6 +37,12 @@ const RouterData = createBrowserRouter([
             {
                 path: ":userId",
                 element: <UserDetail />,
+                children: [
+                    {
+                        path: "comment",
+                        element: <Comment />,
+                    },
+                ],
             },
         ],
     },
