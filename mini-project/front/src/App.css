@@ -2,17 +2,6 @@
     text-align: center;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
 .App-header {
     background-color: #282c34;
     min-height: 100vh;
@@ -28,28 +17,186 @@
     color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.todo-input::placeholder {
-    text-align: center;
-}
-
-.TodoList {
+.TodoForm {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 5px;
 }
-.deleteBtn {
-    margin-left: 5px;
+.todo-input {
+    appearance: none;
+    background: transparent;
+    background-clip: padding-box;
+    color: white;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    min-width: 15px;
+    min-height: 15px;
+    text-align: inherit;
+    text-decoration: inherit;
+    text-transform: inherit;
+    padding: 3px;
+    margin: 2px;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+.todo-input::placeholder {
+    text-align: center;
+}
+.TodoTitle {
+    padding: 3px;
+    margin: 2px;
+}
+.TodoList {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: rgb(255, 255, 255);
+    margin: 4px;
+    padding: 1px;
+    justify-content: space-between;
+}
+.TodoList span input button {
+    padding: 2px;
+    margin: 2px;
+}
+input[type="text"]:focus {
+    border-color: #e50914; /* 선택될 때 테두리 색상을 빨간색으로 변경 */
+    color: white;
+    outline: none; /* 선택될 때 기본 포커스 스타일 제거 */
+    /* placeholder의 색상을 border-color와 같게 */
+}
+input[type="text"]:focus::placeholder {
+    color: rgb(35, 42, 61); /* 플레이스홀더의 색상을 여기에 지정하세요 */
+}
+input[type="checkbox"] {
+    appearance: none; /* 기본 체크 박스 스타일 제거 */
+    width: 20px; /* 체크 박스 크기 조절 */
+    height: 20px;
+    border-radius: 50%; /* 체크 박스를 둥글게 만들기 */
+    border: 2px solid; /* 체크 박스 외곽선 스타일 지정 */
+    transition: border-color 0.3s ease-in-out; /* 체크 박스 애니메이션 효과 추가 */
 }
 
+input[type="checkbox"]:checked {
+    background-color: rgba(229, 9, 20, 1); /* 체크된 상태의 배경색 지정 */
+    border-color: rgba(229, 9, 20, 1); /* 체크된 상태의 외곽선 색 지정 */
+}
+
+input[type="checkbox"]::before {
+    content: "✔"; /* 체크 표시로 사용할 내용 설정 */
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 16px; /* 체크 표시 크기 조절 */
+    text-align: center;
+    line-height: 16px; /* 체크 표시 세로 정렬을 위해 line-height 조절 */
+    color: white; /* 체크 표시 색상 지정 */
+    transition: opacity 0.3s ease-in-out; /* 체크 표시 애니메이션 효과 추가 */
+}
+
+input[type="checkbox"]:checked::before {
+    opacity: 1; /* 체크된 상태일 때 체크 표시 보이기 */
+}
+
+.deleteBtn {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+h1 {
+    font-size: 55px;
+    color: rgba(229, 9, 20, 1);
+    margin: 20px;
+}
 .Todo {
+    width: 100%;
+    text-align: center;
+}
+
+.TodoUl {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+}
+.layout {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    box-sizing: inherit;
+    padding: 0px;
+    margin-top: 16px;
+    margin-left: 0px;
+    justify-content: center;
+    width: 100%;
+}
+.TodoCreate {
+    border: 0px;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    fill: currentcolor;
+    position: relative;
+    transition-duration: 250ms;
+    transition-property: background-color, border-color;
+    transition-timing-function: cubic-bezier(0.9, 0, 0.51, 1);
+    font-size: 1.3rem;
+    font-weight: 500;
+    min-height: 1.5rem;
+    margin: 2px;
+    padding: 0.1rem 1.5rem;
+    background: rgb(229, 9, 20);
+    color: rgb(255, 255, 255);
+}
+
+.submitBox {
+    background: linear-gradient(0deg, rgba(0, 8, 29, 1), rgba(0, 8, 29, 1)) padding-box,
+        linear-gradient(271.65deg, #233371 5.26%, #00197a 50.02%, #e50914 97.68%) border-box;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    width: 50%;
+    padding: 13px 0px;
+}
+
+.TodoBoxText {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 5px;
+    padding: 0px;
+    text-align: center;
+}
+
+.background {
+    /* 배경화면이 되게 제일 뒤로가고 다른 위치에 간섭안하게 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* 가로 세로 전체로 꽉차게 */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 8, 29, 1);
+}
+
+.TodoEdit {
+    color: #b5b9c1; /* 기존에 사용한 CSS에 맞는 글자 색상 지정 */
+    background-color: rgba(0, 8, 29, 1); /* 입력 필드 배경색 지정 */
+    border: 1px solid gray; /* 입력 필드 테두리 스타일 지정 */
+    border-radius: 3px; /* 입력 필드 테두리 둥글기 지정 */
+    padding: 3px; /* 입력 필드 여백 지정 */
+    margin: 2px; /* 입력 필드 여백 지정 */
+    font-size: inherit; /* 폰트 크기 상속 */
+    font-family: inherit; /* 폰트 패밀리 상속 */
     text-align: center;
 }
