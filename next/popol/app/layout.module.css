@@ -1,0 +1,23 @@
+/* 스타일 클래스를 정의합니다. */
+.navbar {
+    background-color: #f2f2f2;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.logo {
+    float: left;
+}
+.logo a {
+    text-decoration: none;
+    color: black;
+}
+.menu {
+    float: right;
+}
+
+.menu a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+}

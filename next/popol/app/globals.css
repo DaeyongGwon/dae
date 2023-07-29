@@ -1,0 +1,58 @@
+body {
+    margin: 0px;
+    background-color: #303030;
+    color: #fff;
+}
+
+.title {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.title-sub {
+    text-align: center;
+}
+.pages {
+    margin: 20px auto;
+    width: 200px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+.pages a {
+    text-decoration: none;
+    color: gray;
+    margin: 0px 10px;
+}
+
+.typeQuest {
+    /* 데코 없애기 */
+    text-decoration: none;
+    /* 글자 색상 */
+    color: #fff;
+    /* 아랫줄 밑줄 */
+    border-bottom: 1px solid #fff;
+}
+
+/* navbar */
+.navbar {
+    background-color: white;
+    padding: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    margin: 0px 10px;
+    color: black;
+}
+
+.underLine {
+    width: 3.25rem;
+    height: 0;
+    margin: 1.5rem auto;
+    border: none;
+    border-top: 0.2rem solid #f4623a;
+    opacity: 1;
+}
