@@ -3,6 +3,10 @@ body {
     background-color: #fff;
     color: #black;
 }
+ul {
+    margin: 0;
+    padding-left: 1rem;
+}
 * {
     box-sizing: border-box;
 }
@@ -10,13 +14,13 @@ body {
     text-align: center;
 }
 .title {
-    text-align: center;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     font-family: Black Han Sans, sans-serif;
     font-weight: 400;
     font-size: 3rem;
     line-height: 1.5;
+    border-bottom-color: #cccccc;
 }
 .black-link {
     position: absolute;
@@ -51,15 +55,6 @@ body {
     text-decoration: none;
     color: gray;
     margin: 0px 10px;
-}
-
-.typeQuest {
-    /* 데코 없애기 */
-    text-decoration: none;
-    /* 글자 색상 */
-    color: #fff;
-    /* 아랫줄 밑줄 */
-    border-bottom: 1px solid #fff;
 }
 
 /* navbar */
@@ -100,7 +95,7 @@ body {
     margin: 0 auto;
 }
 
-.about-container {
+.title-container {
     display: table;
     position: relative;
     margin: 0 auto 3rem;
@@ -119,6 +114,12 @@ body {
     margin-bottom: 0.5rem;
     font-weight: 700;
     font-size: 1.25rem;
+}
+.AboutMe_field-label {
+    margin-bottom: 10px;
+}
+.AboutMe_field-content {
+    font-weight: 300;
 }
 
 .about-detail-container {
@@ -142,9 +143,10 @@ body {
 .AboutMe_icon-img {
     margin-right: 0.5rem;
 }
-
-.AboutMe_field-content {
-    font-weight: 300;
+.AboutMe_icon-img-detail {
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .name-container {
@@ -160,4 +162,127 @@ body {
     font-weight: 700;
     text-align: center;
     color: black;
+}
+
+/* Skills css */
+.SkillsContent {
+    background-color: #ffc107;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 71.25rem;
+    padding: 4rem 2rem;
+    margin: 0 auto;
+    height: 60rem;
+}
+
+.title-container2 {
+    display: table;
+    position: relative;
+    margin: 0 auto 3rem;
+}
+
+.skills-title {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    font-family: Black Han Sans, sans-serif;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 1.5;
+    border-bottom-color: black;
+}
+
+.skills-title-sub {
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #f4623a;
+}
+
+.skills-container {
+    display: flex;
+    display: -ms-flexbox;
+    flex-flow: column wrap;
+    align-content: space-around;
+    -ms-flex-line-pack: distribute;
+    height: calc(100% - (7.5rem + 1px));
+}
+
+.skills-box {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: calc(33.33% - 4rem); /* 3개의 박스를 가로로 나열하므로 가로폭을 33.33%로 설정 */
+    padding: 1.5rem;
+    margin: 2rem 0; /* 각 박스 사이의 간격을 2rem으로 설정 */
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 1rem 1rem 1rem 0 rgba(68, 68, 68, 0.2);
+}
+
+.skills-img {
+    width: 100%;
+}
+
+/* Archiving */
+
+.ArchivingContent {
+    background-color: #222;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 71.25rem;
+    padding: 4rem 2rem;
+    margin: 0 auto;
+    height: 50rem;
+}
+
+.title-container2 {
+    display: table;
+    position: relative;
+    margin: 0 auto 3rem;
+}
+
+.archiving-title {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    color: white;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 1.5;
+    border-bottom-color: gray;
+}
+.archiving-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.archiving-box {
+    box-sizing: border-box;
+    width: 26rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #f5f5f5;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
+.archiving-img-box {
+    display: block;
+    width: 12rem;
+}
+
+.archiving-img {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.archiving-link {
+    /* 밑줄이 안보이게 */
+    text-decoration: none;
+    color: #258ddb;
+    div {
+        text-decoration: none; /* 링크 텍스트의 밑줄 제거 */
+        color: inherit; /* 링크 텍스트의 색상을 부모 요소의 색상과 동일하게 설정 */
+    }
 }

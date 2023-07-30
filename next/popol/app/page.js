@@ -19,7 +19,7 @@ export default function Home() {
             </div>
 
             <div className="AboutMeContent">
-                <div className="about-container">
+                <div className="title-container">
                     <div className="black-link">
                         <img className="black-link-img" src="/black-link.png"></img>
                     </div>
@@ -30,7 +30,7 @@ export default function Home() {
                         <div className="name-box">
                             <div className="AboutMe_field">
                                 <div className="AboutMe_icon-img">
-                                    <img src="/person-fill.svg"></img>
+                                    <img className="AboutMe_icon-img-detail" src="/person-fill.svg"></img>
                                 </div>
                                 <div>
                                     <div className="AboutMe_field-label">이름</div>
@@ -43,7 +43,7 @@ export default function Home() {
                         <div className="name-box">
                             <div className="AboutMe_field">
                                 <div className="AboutMe_icon-img">
-                                    <img src="/calendar-fill.svg"></img>
+                                    <img className="AboutMe_icon-img-detail" src="/calendar-fill.svg"></img>
                                 </div>
                                 <div>
                                     <div className="AboutMe_field-label">생년월일</div>
@@ -56,7 +56,7 @@ export default function Home() {
                         <div className="name-box">
                             <div className="AboutMe_field">
                                 <div className="AboutMe_icon-img">
-                                    <img src="/geo-alt-fill.svg"></img>
+                                    <img className="AboutMe_icon-img-detail" src="/geo-alt-fill.svg"></img>
                                 </div>
                                 <div>
                                     <div className="AboutMe_field-label">주소지</div>
@@ -69,7 +69,7 @@ export default function Home() {
                         <div className="name-box">
                             <div className="AboutMe_field">
                                 <div className="AboutMe_icon-img">
-                                    <img src="/telephone-fill.svg"></img>
+                                    <img className="AboutMe_icon-img-detail" src="/telephone-fill.svg"></img>
                                 </div>
                                 <div>
                                     <div className="AboutMe_field-label">연락처</div>
@@ -82,7 +82,7 @@ export default function Home() {
                         <div className="name-box">
                             <div className="AboutMe_field">
                                 <div className="AboutMe_icon-img">
-                                    <img src="/envelope-fill.svg"></img>
+                                    <img className="AboutMe_icon-img-detail" src="/envelope-fill.svg"></img>
                                 </div>
                                 <div>
                                     <div className="AboutMe_field-label">이메일</div>
@@ -95,13 +95,84 @@ export default function Home() {
                         <div className="name-box">
                             <div className="AboutMe_field">
                                 <div className="AboutMe_icon-img">
-                                    <img src="/pencil-fill.svg"></img>
+                                    <img className="AboutMe_icon-img-detail" src="/pencil-fill.svg"></img>
                                 </div>
                                 <div className="AboutMe_field-label">학력</div>
                             </div>
                         </div>
                     </div>
                     <div className="AboutMe-textBox">*문의 또는 개인 연락은 위 연락처/이메일로 부탁드립니다.</div>
+                </div>
+            </div>
+
+            <div className="SkillsContent">
+                <div className="title-container2">
+                    <div className="black-link">
+                        <img className="black-link-img" src="/black-link.png"></img>
+                    </div>
+                    <div className="skills-title">SKILLS</div>
+                </div>
+                <div className="skills-container">
+                    <div className="skills-box">
+                        <div className="skills-title-sub">Frontend</div>
+                        <img className="skills-img" src="/frontend.png"></img>
+                    </div>
+                    <div className="skills-box">
+                        <div className="skills-title-sub">Backend</div>
+                        <img className="skills-img" src="/backend.png"></img>
+                    </div>
+                    <div className="skills-box">
+                        <div className="skills-title-sub">Version Control</div>
+                        <img className="skills-img" src="/version-control.png"></img>
+                    </div>
+                    <div className="skills-box">
+                        <div className="skills-title-sub">Deployment</div>
+                        <img className="skills-img" src="/deployment.png"></img>
+                    </div>
+                    <div className="skills-box">
+                        <div className="skills-title-sub">Communication</div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="ArchivingContent">
+                <div className="title-container">
+                    <div className="black-link">
+                        <img className="black-link-img" src="/white-link.png"></img>
+                    </div>
+                    <div className="archiving-title">ARCHIVING</div>
+                </div>
+                <div className="archiving-container">
+                    <a className="archiving-box" href="https://github.com/DaeyongGwon">
+                        <div className="archiving-img-box">
+                            <img className="archiving-img" src="/git-hub.png"></img>
+                        </div>
+                        <a className="archiving-link" href="https://github.com/DaeyongGwon">
+                            https://github.com/DaeyongGwon
+                        </a>
+                        <p>
+                            <b>소스 코드 저장소</b>입니다.
+                        </p>
+                        <ul>
+                            <li>과거 프로젝트, 프로그램, 앱의 소스 코드.</li>
+                            <li>혼자서 코딩 연습을 위해 끄적이던 소스 코드</li>
+                        </ul>
+                    </a>
+                    <a className="archiving-box" href="https://iffyong.tistory.com/">
+                        <div className="archiving-img-box">
+                            <img className="archiving-img" src="/tistory.png"></img>
+                        </div>
+                        <a className="archiving-link" href="https://iffyong.tistory.com/">
+                            https://iffyong.tistory.com/
+                        </a>
+                        <p>
+                            <b>공부 및 지식 공유 목적의 블로그</b>입니다.
+                        </p>
+                        <ul>
+                            <li>공부한 것을 진정한 나의 것으로 만들기 위한 기록</li>
+                            <li>웹 개발자의 길을 걸으며 공부한 웹 관련 지식 정리</li>
+                        </ul>
+                    </a>
                 </div>
             </div>
         </div>

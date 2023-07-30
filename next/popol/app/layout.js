@@ -18,12 +18,25 @@ export default function RootLayout({ children }) {
                         {" "}
                         <div className={styles.logo}>
                             {" "}
-                            <Link href="/">DaeYong's Portfolio</Link>
+                            <Link href="/">Iffyong</Link>
                         </div>
                         <div className={styles.menu}>
                             {" "}
-                            <Link href="/about">Introduction</Link>
-                            <Link href="/pages">Projects</Link>
+                            <Link className="nav-category" href="/about">
+                                AboutMe
+                            </Link>
+                            <Link className="nav-category" href="/list">
+                                Skills
+                            </Link>
+                            <Link className="nav-category" href="/list">
+                                Archiving
+                            </Link>
+                            <Link className="nav-category" href="/list">
+                                Projects
+                            </Link>
+                            <Link className="nav-category" href="/pages">
+                                Career
+                            </Link>
                         </div>
                     </div>
                 </header>
