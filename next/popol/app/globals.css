@@ -1,12 +1,38 @@
 body {
     margin: 0px;
-    background-color: #303030;
-    color: #fff;
+    background-color: #fff;
+    color: #black;
 }
-
+* {
+    box-sizing: border-box;
+}
+.main-title {
+    text-align: center;
+}
 .title {
     text-align: center;
-    margin-top: 150px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    font-family: Black Han Sans, sans-serif;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 1.5;
+}
+.black-link {
+    position: absolute;
+    top: 50%;
+    left: -3rem;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    opacity: 0.5;
+    cursor: pointer;
+}
+.black-link-img {
+    width: 100%;
+    height: 100%;
 }
 
 .title-sub {
@@ -55,4 +81,83 @@ body {
     border: none;
     border-top: 0.2rem solid #f4623a;
     opacity: 1;
+}
+.MainHeaderContent {
+    -webkit-box-sizing: border-box;
+    width: 100%;
+    max-width: 71.25rem;
+    margin: 0 auto;
+    padding: 8.5rem 2rem 4rem;
+    text-align: center;
+}
+
+/* about me */
+.AboutMeContent {
+    -webkit-box-sizing: border-box;
+    width: 100%;
+    max-width: 71.25rem;
+    padding: 4rem 2rem;
+    margin: 0 auto;
+}
+
+.about-container {
+    display: table;
+    position: relative;
+    margin: 0 auto 3rem;
+}
+
+.about-detail-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    -webkit-box-pack: justify;
+}
+
+.AboutMe_field {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.about-detail-container {
+    display: flex;
+    flex-wrap: wrap; /* 요소들이 너비를 초과하면 다음 줄로 넘어갑니다. */
+    justify-content: space-between; /* 각 요소들을 동일한 간격으로 배치합니다. */
+}
+
+/* .name-box 스타일 수정 */
+.name-box {
+    display: flex;
+    display: -ms-flexbox;
+    flex-flow: row nowrap;
+    width: 100%;
+    max-width: 14rem;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+/* .AboutMe_icon-img 스타일 수정 */
+.AboutMe_icon-img {
+    margin-right: 0.5rem;
+}
+
+.AboutMe_field-content {
+    font-weight: 300;
+}
+
+.name-container {
+    width: 33.3333%;
+    margin-bottom: 20px;
+}
+
+.AboutMe-textBox {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    background-color: #f0c9c9;
+    font-weight: 700;
+    text-align: center;
+    color: black;
 }
