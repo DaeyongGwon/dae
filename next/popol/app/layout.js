@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import Link from "next/link";
 import styles from "./layout.module.css"; // 스타일 파일을 불러옴
 import "./globals.css"; // global.css 파일을 불러옴
@@ -12,34 +11,33 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                {/* top navbar */}
-                <header>
-                    <div className={styles.navbar}>
-                        {" "}
-                        <div className={styles.logo}>
+                <>
+                    <div className={styles.headerBox}>
+                        <div className={styles.navbar}>
                             {" "}
-                            <Link href="/">Iffyong</Link>
-                        </div>
-                        <div className={styles.menu}>
-                            {" "}
-                            <Link className="nav-category" href="/about">
-                                AboutMe
-                            </Link>
-                            <Link className="nav-category" href="/list">
-                                Skills
-                            </Link>
-                            <Link className="nav-category" href="/list">
-                                Archiving
-                            </Link>
-                            <Link className="nav-category" href="/list">
-                                Projects
-                            </Link>
-                            <Link className="nav-category" href="/pages">
-                                Career
-                            </Link>
+                            <div className={styles.logo}>
+                                {" "}
+                                <Link href="/">Iffyong</Link>
+                            </div>
+                            <div className={styles.menu}>
+                                {" "}
+                                <Link className="nav-category" href="/about">
+                                    AboutMe
+                                </Link>
+                                <Link className="nav-category" href="/list">
+                                    Skills
+                                </Link>
+                                <Link className="nav-category" href="/list">
+                                    Archiving
+                                </Link>
+                                <Link className="nav-category" href="/list">
+                                    Projects
+                                </Link>
+                                <Link href="/pages">Career</Link>
+                            </div>
                         </div>
                     </div>
-                </header>
+                </>
 
                 {children}
             </body>

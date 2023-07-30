@@ -12,6 +12,10 @@ ul {
 }
 .main-title {
     text-align: center;
+
+    @media (max-width: 767px) {
+        z-index: 2000;
+    }
 }
 .title {
     border-bottom-width: 1px;
@@ -77,15 +81,29 @@ ul {
     border-top: 0.2rem solid #f4623a;
     opacity: 1;
 }
+
+.about-mainBox {
+    background-color: white;
+}
+
 .MainHeaderContent {
     -webkit-box-sizing: border-box;
     width: 100%;
     max-width: 71.25rem;
     margin: 0 auto;
     padding: 8.5rem 2rem 4rem;
+    top: 4.5rem;
     text-align: center;
+    height: 30rem;
 }
-
+.main-img {
+    width: 100%;
+    position: absolute;
+    /* 흐리게 */
+    opacity: 0.5;
+    height: 30rem;
+    z-index: -1;
+}
 /* about me */
 .AboutMeContent {
     -webkit-box-sizing: border-box;
@@ -106,6 +124,12 @@ ul {
     flex-flow: row wrap;
     justify-content: space-between;
     -webkit-box-pack: justify;
+    /* 모바일 사이즈 반응형ㅇ */
+    @media (max-width: 767px) {
+        width: 100%;
+        flex-flow: column wrap;
+        align-items: center;
+    }
 }
 
 .AboutMe_field {
@@ -120,12 +144,6 @@ ul {
 }
 .AboutMe_field-content {
     font-weight: 300;
-}
-
-.about-detail-container {
-    display: flex;
-    flex-wrap: wrap; /* 요소들이 너비를 초과하면 다음 줄로 넘어갑니다. */
-    justify-content: space-between; /* 각 요소들을 동일한 간격으로 배치합니다. */
 }
 
 /* .name-box 스타일 수정 */
@@ -152,6 +170,10 @@ ul {
 .name-container {
     width: 33.3333%;
     margin-bottom: 20px;
+
+    @media (max-width: 767px) {
+        width: 100%;
+    }
 }
 
 .AboutMe-textBox {
@@ -165,14 +187,20 @@ ul {
 }
 
 /* Skills css */
-.SkillsContent {
+.skills-mainBox {
     background-color: #ffc107;
+}
+.SkillsContent {
     box-sizing: border-box;
     width: 100%;
     max-width: 71.25rem;
     padding: 4rem 2rem;
     margin: 0 auto;
-    height: 60rem;
+    height: 66rem;
+
+    @media (max-width: 767px) {
+        height: 100%;
+    }
 }
 
 .title-container2 {
@@ -207,6 +235,13 @@ ul {
     align-content: space-around;
     -ms-flex-line-pack: distribute;
     height: calc(100% - (7.5rem + 1px));
+
+    @media (max-width: 768px) {
+        flex-flow: row wrap;
+        justify-content: space-between;
+        -webkit-box-pack: justify;
+        height: 100%;
+    }
 }
 
 .skills-box {
@@ -218,6 +253,11 @@ ul {
     border-radius: 1rem;
     background-color: #fff;
     box-shadow: 1rem 1rem 1rem 0 rgba(68, 68, 68, 0.2);
+
+    @media (max-width: 767px) {
+        width: 100%;
+        margin: 1rem 0;
+    }
 }
 
 .skills-img {
@@ -225,21 +265,30 @@ ul {
 }
 
 /* Archiving */
-
-.ArchivingContent {
+.archiving-mainBox {
     background-color: #222;
+}
+.ArchivingContent {
     box-sizing: border-box;
     width: 100%;
     max-width: 71.25rem;
     padding: 4rem 2rem;
     margin: 0 auto;
-    height: 50rem;
+    height: 33rem;
+
+    @media (max-width: 767px) {
+        height: 100%;
+    }
 }
 
-.title-container2 {
+.title-container3 {
     display: table;
     position: relative;
     margin: 0 auto 3rem;
+
+    @media (max-width: 767px) {
+        margin: 0 auto 1.5rem;
+    }
 }
 
 .archiving-title {
@@ -249,7 +298,7 @@ ul {
     font-weight: 400;
     font-size: 3rem;
     line-height: 1.5;
-    border-bottom-color: gray;
+    border-bottom-color: #cccccc;
 }
 .archiving-container {
     display: flex;
@@ -265,6 +314,11 @@ ul {
     text-decoration: none;
     cursor: pointer;
     color: black;
+
+    @media (max-width: 767px) {
+        width: 100%;
+        margin: 1rem 0;
+    }
 }
 
 .archiving-img-box {
@@ -285,4 +339,34 @@ ul {
         text-decoration: none; /* 링크 텍스트의 밑줄 제거 */
         color: inherit; /* 링크 텍스트의 색상을 부모 요소의 색상과 동일하게 설정 */
     }
+}
+
+/* ProjectsContent */
+
+.projects-mainBox {
+    background-color: #1d809f;
+}
+.ProjectsContent {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 71.25rem;
+    padding: 4rem 2rem;
+    margin: 0 auto;
+    height: 33rem;
+}
+
+.title-container {
+    display: table;
+    position: relative;
+    margin: 0 auto 3rem;
+}
+
+.projects-title {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    color: white;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 1.5;
+    border-bottom-color: #cccccc;
 }
