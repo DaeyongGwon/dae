@@ -1,14 +1,19 @@
 /* 스타일 클래스를 정의합니다. */
 .navbar {
-    background-color: #f2f2f2;
+    background-color: #ba8f4f;
     padding: 10px;
     overflow: hidden;
+    padding: 30px;
+    /* 아래쪽 그림자 살짝 */
+    /* box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.8); */
 }
 
 .logo {
     float: left;
 }
 .logo a {
+    font-size: 1.5rem;
+    font-weight: 500;
     text-decoration: none;
     color: black;
 }

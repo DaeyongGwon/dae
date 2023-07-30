@@ -13,18 +13,21 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body>
                 {/* top navbar */}
-                <div className={styles.navbar}>
-                    {" "}
-                    <div className={styles.logo}>
+                <header>
+                    <div className={styles.navbar}>
                         {" "}
-                        <Link href="/">DaeYong's Portfolio</Link>
+                        <div className={styles.logo}>
+                            {" "}
+                            <Link href="/">DaeYong's Portfolio</Link>
+                        </div>
+                        <div className={styles.menu}>
+                            {" "}
+                            <Link href="/about">Introduction</Link>
+                            <Link href="/pages">Projects</Link>
+                        </div>
                     </div>
-                    <div className={styles.menu}>
-                        {" "}
-                        <Link href="/about">Introduction</Link>
-                        <Link href="/pages">Projects</Link>
-                    </div>
-                </div>
+                </header>
+
                 {children}
             </body>
         </html>
